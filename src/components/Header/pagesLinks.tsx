@@ -53,7 +53,7 @@ const StyledPagesLinks = styled.div<PropsStyle>`
       padding: 10px;
     
       &:hover{
-        background-image: linear-gradient(to right, ${props => props.theme.colors.background_emphasys}, ${props => props.theme.colors.background_emphasys_contrast});
+        background-image: ${props => props.theme.colors.gradient};
         color: #FFF;
       }
     }

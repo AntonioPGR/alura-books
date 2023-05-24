@@ -10,6 +10,7 @@ declare module 'styled-components' {
       background_contrast: string,
       background_emphasys: string,
       background_emphasys_contrast: string,
+      gradient: string,
       text: string,
       text_contrast: string,
       text_emphasys: string,

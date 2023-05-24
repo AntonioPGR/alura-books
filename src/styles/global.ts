@@ -5,5 +5,6 @@ export const GlobalStyle = createGlobalStyle`
   *{
     font-size: ${props => props.theme.typography.size.default};
     font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
   }
 `
