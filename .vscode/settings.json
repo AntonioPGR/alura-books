@@ -7,13 +7,7 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "*.pdf": true,
-    "node_modules": true,
-    "LICENSE": true,
-    ".vscode": true
+    "package.json": true
   },
-  "hide-files.files": [
-    "node_modules",
-    "LICENSE",
-    ".vscode"
-  ]
+  "hide-files.files": []
 }

@@ -18,11 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
-    "noImplicitAny": true,
+    "jsx": "react-jsx",
     "baseUrl": "./src",
+    "noImplicitAny": true
   },
   "include": [
-    "src"
+    "src",
+    "src/interfaces/*.d.ts"
   ]
 }
