@@ -1,3 +1,4 @@
+import { Paragraph } from "components/Paragraph"
 import { AbCampoTexto } from "ds-alurabooks"
 import styled from "styled-components"
 
@@ -6,7 +7,7 @@ export const Search = () => {
     <StyledSearch>
       <div className="search__titles">
         <h1 className="titles__maintitle"> Já sabe por onde começar? </h1>
-        <p className="titles__subtitle"> Encontre em nossa estante o que precisa para seu desenvolvimento! </p>
+        <Paragraph> Encontre em nossa estante o que precisa para seu desenvolvimento! </Paragraph>
       </div>
       <div className="search__input">
         <AbCampoTexto darkmode placeholderAlign="center" placeholder="Qual será sua próxima leitura?" type="text" onChange={() => console.log('opa')} value="" />
@@ -33,6 +34,7 @@ const StyledSearch = styled.section`
 
     .titles__maintitle{
       font-size: ${props => props.theme.typography.size.titles};
+      font-weight: 600;
     }
   }
 

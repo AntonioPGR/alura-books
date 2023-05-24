@@ -21,9 +21,9 @@ export const defaultTheme : DefaultTheme = {
       small: '14px',
       default: '16px',
       large: '18px',
-      largex: '32px',
-      titles: '36px',
-      headings: '156px'
+      largex: '24px',
+      titles: '32px',
+      headings: '36px'
     },
   },
   spacing:{

@@ -1,12 +1,12 @@
-import { Search } from "components/Search"
-import { Header } from "./components/Header"
+import { Header } from "components/Header"
+import { HomePage } from "pages/home"
 
 
 export const App = () => {
   return(
     <>
       <Header />
-      <Search />
+      <HomePage />
     </>
   )
 }
