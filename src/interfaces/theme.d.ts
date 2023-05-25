@@ -4,17 +4,11 @@ import 'styled-components'
 declare module 'styled-components' {
   export interface DefaultTheme{
     colors: {
-      action: string,
-      action_contrast: string,
-      background: string,
-      background_contrast: string,
-      background_emphasys: string,
-      background_emphasys_contrast: string,
-      gradient: string,
-      text: string,
-      text_contrast: string,
-      text_emphasys: string,
-      text_emphasys_contrast: string
+      yellow: string,
+      white: string,
+      black: string,
+      darkBlue: string,
+      gradient: string
     },
     typography:{
       primary: string,

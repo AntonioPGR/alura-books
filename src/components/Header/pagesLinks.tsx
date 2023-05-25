@@ -12,7 +12,7 @@ export const PagesLinks = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return(
-    <StyledPagesLinks is_menu_open={isMenuOpen}>
+    <StyledPagesLinks is_menu_open={isMenuOpen? 1 : 0}>
       <img onClick={() => setIsMenuOpen(!isMenuOpen)} src={isMenuOpen? MenuIconWhite : MenuIcon} alt="Menu de links" className="pages__menu" />
       <div className="pages__links">
         <a href="#" target="_self">
@@ -30,7 +30,7 @@ export const PagesLinks = () => {
 }
 
 interface PropsStyle{
-  is_menu_open: boolean
+  is_menu_open: 1 | 0
 }
 const StyledPagesLinks = styled.div<PropsStyle>`
   grid-area: pages_links;
@@ -60,7 +60,11 @@ const StyledPagesLinks = styled.div<PropsStyle>`
   }
 
   @media (max-width: ${props => props.theme.breakpoints.laptop}){
-    background-image: ${props => props.is_menu_open? `linear-gradient(to right, ${props.theme.colors.background_emphasys}, ${props.theme.colors.background_emphasys_contrast})` : 'none'};
+    background-image: ${props => props.is_menu_open? props.theme.colors.gradient : 'none'};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
 
     .pages__menu{
       display: block;

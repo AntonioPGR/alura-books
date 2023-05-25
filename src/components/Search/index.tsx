@@ -26,7 +26,7 @@ const StyledSearch = styled.section`
   height: 330px;
 
   * > *, *{
-    color: ${props => props.theme.colors.text_contrast};
+    color: ${props => props.theme.colors.white};
   }
 
   .search__titles{

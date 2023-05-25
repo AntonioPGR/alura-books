@@ -14,5 +14,5 @@ export const Paragraph = ({children, darkMode}:PropsParagraph) => {
 }
 
 const StyledParagraph = styled.p<{darkMode?:boolean}>`
-  color: ${props => props.darkMode? props.theme.colors.text_contrast : props.theme.colors.text};
+  color: ${props => props.darkMode? props.theme.colors.white : props.theme.colors.black};
 `
