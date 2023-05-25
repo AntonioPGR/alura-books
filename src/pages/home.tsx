@@ -1,6 +1,7 @@
 import { Search } from "components/Search"
 import { NewsLetter } from "components/Newsletter"
 import { MostSearchedCategories } from "components/MostSearchedCategories"
+import { Footer } from "components/Footer"
 
 
 export const HomePage = () => {
@@ -9,6 +10,7 @@ export const HomePage = () => {
       <Search />
       <MostSearchedCategories />
       <NewsLetter />
+      <Footer />
     </>
   )
 }

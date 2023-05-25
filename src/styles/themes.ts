@@ -4,9 +4,10 @@ export const defaultTheme : DefaultTheme = {
   colors: {
     yellow: "#EB9B00",
     white: "#FFFFFF",
-    black: "rgba(0, 0, 0, 0.85)",
+    black: "474646",
     darkBlue: "",
     gradient: "linear-gradient(to bottom right, #002F52 60%, #326589)",
+    gray: "#858585"
   },
   typography:{
     primary: "Poppins, serif",
