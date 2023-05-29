@@ -2,11 +2,12 @@ import { styled } from "styled-components"
 
 
 interface PropsBook {
-  book: IBook
+  book: IBook,
+  onClick: (book:IBook) => void
 }
-export const Book = ({book}:PropsBook) => {
+export const Book = ({book, onClick}:PropsBook) => {
   return(
-    <StyledBook>
+    <StyledBook onClick={() => onClick(book)}>
       <img src={book.cover}  alt={`Capa do livro ${book.title}`} />
     </StyledBook>
   )

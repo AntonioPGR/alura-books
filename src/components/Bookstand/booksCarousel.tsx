@@ -3,13 +3,14 @@ import { Book } from "./book"
 
 
 interface PropsBooksCarousel {
-  books: IBook[]
+  books: IBook[],
+  onSelectBook: (book:IBook) => void
 }
-export const BooksCarousel = ({books}:PropsBooksCarousel) => {
+export const BooksCarousel = ({books, onSelectBook}:PropsBooksCarousel) => {
   return(
     <StyledBookCarousel>
       {
-        books.map((book) => <Book key={book.id} book={book} />)
+        books.map((book) => <Book onClick={onSelectBook} key={book.id} book={book} />)
       }
     </StyledBookCarousel>
   )
