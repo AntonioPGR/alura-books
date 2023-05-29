@@ -10,7 +10,7 @@ export const Search = () => {
         <Paragraph> Encontre em nossa estante o que precisa para seu desenvolvimento! </Paragraph>
       </div>
       <div className="search__input">
-        <AbCampoTexto darkmode placeholderAlign="center" placeholder="Qual será sua próxima leitura?" type="text" onChange={() => console.log('opa')} value="" />
+        <AbCampoTexto darkmode  placeholderAlign="center" placeholder="Qual será sua próxima leitura?" type="text" onChange={() => console.log('opa')} value="" />
       </div>
     </StyledSearch>
   )
