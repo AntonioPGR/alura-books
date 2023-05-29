@@ -6,6 +6,7 @@ interface PropsSectionTitle{
   bold?: boolean,
   dark_mode?: 'white' | 'yellow',
   text_align?: 'left' | 'center' | 'right',
+  text_style?: 'uppercase' | '' | 'lowercase',
 }
 export const SectionTitle = ({children, dark_mode, bold, size, text_align}:PropsSectionTitle) => {
   console.log(text_align)
