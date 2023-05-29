@@ -72,9 +72,18 @@ const StyledBookCard = styled.article`
 
   .book__info{
     font-size: ${props => props.theme.typography.size.small};
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    max-height: 100%;
+    
+    .book__description{ 
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* number of lines to show */
+      -webkit-box-orient: vertical;
+      max-height: 80px;
+    }
   }
 
   .book__priceContainer{

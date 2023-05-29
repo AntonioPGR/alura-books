@@ -1,8 +1,11 @@
 import { Paragraph } from "components/Paragraph"
 import { AbCampoTexto } from "ds-alurabooks"
+import { useState } from "react"
 import styled from "styled-components"
 
 export const Search = () => {
+  const [searchValue, setSearchValue] = useState<string>("")
+  
   return(
     <StyledSearch>
       <div className="search__titles">
@@ -10,7 +13,7 @@ export const Search = () => {
         <Paragraph> Encontre em nossa estante o que precisa para seu desenvolvimento! </Paragraph>
       </div>
       <div className="search__input">
-        <AbCampoTexto darkmode  placeholderAlign="center" placeholder="Qual será sua próxima leitura?" type="text" onChange={() => console.log('opa')} value="" />
+        <AbCampoTexto darkmode  placeholderAlign="center" placeholder="Qual será sua próxima leitura?" type="text" onChange={setSearchValue} value={searchValue} />
       </div>
     </StyledSearch>
   )

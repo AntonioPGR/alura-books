@@ -5,6 +5,8 @@ import { styled } from "styled-components"
 import MenuIcon from 'images/menu.svg'
 import MenuIconWhite from 'images/menuWhite.svg'
 import { useState } from "react"
+import { DropDownMenu } from "./dropDownMenu"
+import { categories_data } from "data/categories"
 
 
 export const PagesLinks = () => {
@@ -15,9 +17,7 @@ export const PagesLinks = () => {
     <StyledPagesLinks is_menu_open={isMenuOpen? 1 : 0}>
       <img onClick={() => setIsMenuOpen(!isMenuOpen)} src={isMenuOpen? MenuIconWhite : MenuIcon} alt="Menu de links" className="pages__menu" />
       <div className="pages__links">
-        <a href="#" target="_self">
-          categorias
-        </a>
+        <DropDownMenu title={"Categorias"} links={categories_data} />
         <a href="#" target="_self">
           favoritos
         </a>

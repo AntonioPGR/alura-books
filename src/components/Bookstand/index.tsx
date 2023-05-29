@@ -10,7 +10,7 @@ interface PropsBookstand {
   title: string,
 }
 export const Bookstand = ({books, title}:PropsBookstand) => {
-  const [currentBook, ] = useState(books[0])
+  const [currentBook, setCurrentBook] = useState(books[0])
 
   return(
     <StyledBookstand>
@@ -18,7 +18,7 @@ export const Bookstand = ({books, title}:PropsBookstand) => {
         <SectionTitle text_align="center" bold dark_mode="yellow"> {title} </SectionTitle>
       </div>
       <div className="content">
-        <BooksCarousel books={books} />
+        <BooksCarousel onSelectBook={setCurrentBook} books={books} />
         <BookCard book={currentBook} />
       </div>
     </StyledBookstand>

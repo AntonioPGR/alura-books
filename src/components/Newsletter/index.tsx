@@ -1,11 +1,13 @@
 import { Paragraph } from "components/Paragraph"
 import { SectionTitle } from "components/Title"
 import { AbCampoTexto } from "ds-alurabooks"
+import { useState } from "react"
 import { styled } from "styled-components"
 
 
 export const NewsLetter = () => {
-
+  const [email, setEmail] = useState("")
+  
   return(
     <StyledNewsLetter>
       <div className="newsletter__titles">
@@ -15,7 +17,7 @@ export const NewsLetter = () => {
         </Paragraph>
       </div>
       <div>
-        <AbCampoTexto placeholder="Cadastre seu e-mail"  value="" onChange={() => console.log()} />
+        <AbCampoTexto placeholder="Cadastre seu e-mail"  value={email} onChange={setEmail} />
       </div>
     </StyledNewsLetter>
   )

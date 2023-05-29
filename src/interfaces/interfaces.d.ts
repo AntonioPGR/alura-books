@@ -1,6 +1,8 @@
 declare interface ILink{
+  id?: number,
   label: string,
   to: string,
+  target: '_Blank' | '_self'
 }
 
 declare type children = ReactNode
