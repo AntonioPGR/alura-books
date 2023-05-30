@@ -3,6 +3,7 @@ import { Logo } from "./logo"
 import { PagesLinks } from "./pagesLinks"
 import { PersonalLinks } from "./personalLinks"
 import { OverScreen } from "components/overScreen"
+import { SingUpForm } from "components/singUpForm"
 
 
 export const Header = () => {
