@@ -2,7 +2,6 @@ import styled from "styled-components"
 import { Logo } from "./logo"
 import { PagesLinks } from "./pagesLinks"
 import { PersonalLinks } from "./personalLinks"
-import { SignUpForm } from "components/singUpForm"
 
 
 export const Header = () => {

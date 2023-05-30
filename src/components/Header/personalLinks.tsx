@@ -7,6 +7,7 @@ import Perfil from 'images/perfil.svg'
 import Favoritos from 'images/favorito.svg'
 import { useState } from "react"
 import { SignUpForm } from "components/singUpForm"
+import { LoginForm } from "components/loginForm"
 
 
 export const PersonalLinks = () => {
@@ -28,12 +29,12 @@ export const PersonalLinks = () => {
         </a>
         <button className="personalLink__link" onClick={() => setIsSignUpOpen(true)}>
           <img src={Perfil} alt="icone meu perfil" />
-          <span> Login </span>
+          <span> Cadastrar </span>
         </button>
       </StyledPersonalLinks>
       {
         isSignUpOpen &&
-        <SignUpForm onClose={() => setIsSignUpOpen(false)} />
+        <LoginForm onClose={() => setIsSignUpOpen(false)} />
       }
     </>
   )

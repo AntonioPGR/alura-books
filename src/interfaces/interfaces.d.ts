@@ -7,6 +7,10 @@ declare interface ILink{
 
 declare type children = ReactNode
 
+declare type voidFunction = () => void
+
+declare type voidFunctionWithParameter<T> = (element:T) => void
+
 declare interface IBook {
   id: number,
   title: string,
@@ -15,4 +19,19 @@ declare interface IBook {
   author: string,
   price: number,
   cover: string
+}
+
+declare interface IUserSignUp{
+  nome: string,
+  email: string,
+  senha: string,
+  endereco: string,
+  complemento: string,
+  cep: string
+}
+
+
+declare interface IUserLogin{
+  email: string,
+  senha: string,
 }

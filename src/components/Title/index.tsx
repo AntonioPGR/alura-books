@@ -9,7 +9,6 @@ interface PropsSectionTitle{
   text_style?: 'uppercase' | '' | 'lowercase',
 }
 export const SectionTitle = ({children, dark_mode, bold, size, text_align}:PropsSectionTitle) => {
-  console.log(text_align)
   return(
     <StyledSectionTitle dark_mode={dark_mode} bold={bold? 1 : 0} size={size} text_align={text_align}>
       {children}
