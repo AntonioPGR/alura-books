@@ -22,7 +22,7 @@ export const PersonalLinks = () => {
       </a>
       <a href="#" target="_self">
         <img src={Perfil} alt="icone meu perfil" />
-        <span> Meu perfil </span>
+        <span> Login </span>
       </a>
     </StyledPersonalLinks>
   )

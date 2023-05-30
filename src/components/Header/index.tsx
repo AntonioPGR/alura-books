@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Logo } from "./logo"
 import { PagesLinks } from "./pagesLinks"
 import { PersonalLinks } from "./personalLinks"
-import { SingUpForm } from "components/singUpForm"
+import { OverScreen } from "components/overScreen"
 
 
 export const Header = () => {

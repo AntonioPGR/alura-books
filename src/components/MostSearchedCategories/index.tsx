@@ -1,36 +1,21 @@
 import { SectionTitle } from "components/Title"
+import { AbBotao } from "ds-alurabooks"
 import { styled } from "styled-components"
 
 
 export const MostSearchedCategories : React.FC = () => {
   return(
     <StyledMostSearchedCategories>
-      <SectionTitle size="small" darkMode='white' > CATEGORIAS MAIS BUSCADAS </SectionTitle>
+      <SectionTitle size="small" dark_mode='white' > CATEGORIAS MAIS BUSCADAS </SectionTitle>
       <ul className="mostSearchedCategories__categories">
-        <li>
-          Android
-        </li>
-        <li>
-          OO
-        </li>
-        <li>
-          Marketing Digital
-        </li>
-        <li>
-          Agile
-        </li>
-        <li>
-          Startups
-        </li>
-        <li>
-          HTML & CSS
-        </li>
-        <li>
-          Java
-        </li>
-        <li>
-          Python
-        </li>
+        <AbBotao texto="Android" />
+        <AbBotao texto="OO" />
+        <AbBotao texto="Marketing Digital" />
+        <AbBotao texto="Agile" />
+        <AbBotao texto="Startups" />
+        <AbBotao texto="HTML & CSS" />
+        <AbBotao texto="Java" />
+        <AbBotao texto="Python" />
       </ul>
     </StyledMostSearchedCategories>
   )
