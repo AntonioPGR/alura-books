@@ -9,15 +9,18 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'styles/global';
 import { ResetCSS } from 'styles/reset';
 import { defaultTheme } from 'styles/themes';
+import { RecoilRoot } from 'recoil';
 
 const Index = () => {
   return(
     <StrictMode>
-      <ThemeProvider theme={defaultTheme}>
-        <ResetCSS />
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
+      <RecoilRoot>
+        <ThemeProvider theme={defaultTheme}>
+          <ResetCSS />
+          <GlobalStyle />
+          <App />
+        </ThemeProvider>
+      </ RecoilRoot>
     </StrictMode>
   )
 }

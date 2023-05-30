@@ -5,14 +5,15 @@ import { styled } from "styled-components"
 import Sacola from 'images/sacola.svg'
 import Perfil from 'images/perfil.svg'
 import Favoritos from 'images/favorito.svg'
-import { useState } from "react"
-import { SignUpForm } from "components/singUpForm"
-import { LoginForm } from "components/loginForm"
+import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
+import { useSetRecoilState } from "recoil"
+import { renderOverflow } from "utils/renderOverflow"
 
 
 export const PersonalLinks = () => {
 
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false)
+  const setWhatOverflow = useSetRecoilState(StatewhatOverflowIsOpen)
+  const renderOver = renderOverflow()
 
   return(
     <>
@@ -27,14 +28,13 @@ export const PersonalLinks = () => {
           <img src={Sacola} alt="icone sacola" />
           <span> Minha sacola </span>
         </a>
-        <button className="personalLink__link" onClick={() => setIsSignUpOpen(true)}>
+        <button className="personalLink__link" onClick={() => setWhatOverflow('login')}>
           <img src={Perfil} alt="icone meu perfil" />
           <span> Cadastrar </span>
         </button>
       </StyledPersonalLinks>
       {
-        isSignUpOpen &&
-        <LoginForm onClose={() => setIsSignUpOpen(false)} />
+        renderOver()
       }
     </>
   )

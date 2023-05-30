@@ -5,6 +5,8 @@ import { styled } from "styled-components"
 import { OverScreen } from "components/overScreen"
 import { logarUsuario } from "requests/usuario"
 import { createCleanForm } from "utils/createCleanForm"
+import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
+import { useSetRecoilState } from "recoil"
 
 
 interface PropsLoginForm{
@@ -36,7 +38,9 @@ export const LoginForm = ({onClose}:PropsLoginForm) => {
     logarUsuario(loginusuario, thenCallback, catchCallback)
 
   }
-
+  
+  const setWhatOverflow = useSetRecoilState(StatewhatOverflowIsOpen)
+  
   return (
     <OverScreen onClose={onClose} title="Login">
       <StyledLoginForm>
@@ -46,7 +50,7 @@ export const LoginForm = ({onClose}:PropsLoginForm) => {
         <section className="login__content">
           <form onSubmit={(ev) => handleSubmit(ev)} className="loginForm__form">
             <AbCampoTexto value={email} onChange={setEmail} label="Email" placeholder="seuemail@maneiro.com" />
-            <AbCampoTexto value={senha} onChange={setSenha} type="password" label="Senha" />
+            <AbCampoTexto value={senha} onChange={setSenha} type="password" placeholder="******" label="Senha" />
             <div className="formActions">
               <p className="formAcions__forgetPassword">Esqueci minha senha</p>
               <AbBotao texto="Entrar" />
@@ -54,7 +58,7 @@ export const LoginForm = ({onClose}:PropsLoginForm) => {
           </form>
           <footer className="login__footer">
             <h3 className="login__footer__title"> Ainda não tem uma conta? </h3>
-            <AbBotao texto="Entrar" />
+            <AbBotao texto="Criar Conta" onClick={() => setWhatOverflow('signUp')} />
           </footer>
         </section>
       </StyledLoginForm>
