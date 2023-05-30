@@ -2,8 +2,7 @@ import styled from "styled-components"
 import { Logo } from "./logo"
 import { PagesLinks } from "./pagesLinks"
 import { PersonalLinks } from "./personalLinks"
-import { OverScreen } from "components/overScreen"
-import { SingUpForm } from "components/singUpForm"
+import { SignUpForm } from "components/singUpForm"
 
 
 export const Header = () => {
@@ -12,9 +11,6 @@ export const Header = () => {
       <Logo />
       <PagesLinks />
       <PersonalLinks />
-      <OverScreen title="opa" onClose={() => console.log('f')}>
-        <SingUpForm />
-      </OverScreen>
     </StyledHeader>
   )
 }

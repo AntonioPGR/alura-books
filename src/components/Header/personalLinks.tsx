@@ -5,26 +5,37 @@ import { styled } from "styled-components"
 import Sacola from 'images/sacola.svg'
 import Perfil from 'images/perfil.svg'
 import Favoritos from 'images/favorito.svg'
+import { useState } from "react"
+import { SignUpForm } from "components/singUpForm"
 
 
 export const PersonalLinks = () => {
+
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false)
+
   return(
-    <StyledPersonalLinks>
-      <span className="displayOnSmallDevice">
-        <a href="#" target="_self">
-          <img src={Favoritos} alt="icone de favoritos" />
-          <span> favoritos </span>
+    <>
+      <StyledPersonalLinks>
+        <span className="displayOnSmallDevice">
+          <a className="personalLink__link" href="#" target="_self">
+            <img src={Favoritos} alt="icone de favoritos" />
+            <span> favoritos </span>
+          </a>
+        </span>
+        <a className="personalLink__link" href="#" target="_self">
+          <img src={Sacola} alt="icone sacola" />
+          <span> Minha sacola </span>
         </a>
-      </span>
-      <a href="#" target="_self">
-        <img src={Sacola} alt="icone sacola" />
-        <span> Minha sacola </span>
-      </a>
-      <a href="#" target="_self">
-        <img src={Perfil} alt="icone meu perfil" />
-        <span> Login </span>
-      </a>
-    </StyledPersonalLinks>
+        <button className="personalLink__link" onClick={() => setIsSignUpOpen(true)}>
+          <img src={Perfil} alt="icone meu perfil" />
+          <span> Login </span>
+        </button>
+      </StyledPersonalLinks>
+      {
+        isSignUpOpen &&
+        <SignUpForm onClose={() => setIsSignUpOpen(false)} />
+      }
+    </>
   )
 }
 
@@ -42,12 +53,13 @@ const StyledPersonalLinks = styled.div`
     display: none;
   }
 
-  a{
+  .personalLink__link{
     display: flex;
     flex-flow: row nowrap;
     gap: ${props => props.theme.spacing.small};
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   
     span{
       text-transform: capitalize;
@@ -64,7 +76,7 @@ const StyledPersonalLinks = styled.div`
       display: block;
     }
 
-    a{
+    .personalLink__link{
       span{
         display: none;
       }

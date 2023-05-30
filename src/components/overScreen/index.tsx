@@ -52,5 +52,9 @@ const StyledOverScreen = styled.div`
       gap: ${props => props.theme.spacing.large};
     }
 
+    .closeIconContainer{
+      cursor: pointer;
+    }
+
   }
 `
