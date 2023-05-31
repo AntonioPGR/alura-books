@@ -27,6 +27,7 @@ const StyledSearch = styled.section`
   gap: ${props => props.theme.spacing.large};
   background-image: ${props => props.theme.colors.gradient};
   height: 330px;
+  padding: ${props => props.theme.spacing.large};
 
   * > *, *{
     color: ${props => props.theme.colors.white};

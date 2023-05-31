@@ -8,18 +8,24 @@ interface PropsBook {
 export const Book = ({book, onClick}:PropsBook) => {
   return(
     <StyledBook onClick={() => onClick(book)}>
-      <img src={book.cover}  alt={`Capa do livro ${book.title}`} />
+      <img className='book__cover' src={book.cover}  alt={`Capa do livro ${book.title}`} />
     </StyledBook>
   )
 }
 
 const StyledBook = styled.article`
-  img{
-    max-width: 100%;
-  }
+  max-width: 300px;
+  height: 100%;
+  margin: auto;
 
+  .book__cover{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
   &:hover{
-    transform: scale(1.1, 1.1);
+    transform: scale(1.05, 1.05);
     cursor: pointer;
   }
 `

@@ -16,7 +16,7 @@ export const NewsLetter = () => {
           Atualizações de e-books, novos livros, promoções e outros.
         </Paragraph>
       </div>
-      <div>
+      <div className="newsletter__input">
         <AbCampoTexto placeholder="Cadastre seu e-mail"  value={email} onChange={setEmail} />
       </div>
     </StyledNewsLetter>
@@ -25,8 +25,7 @@ export const NewsLetter = () => {
 
 const StyledNewsLetter = styled.section`
   max-width: 774px;
-  width: 100%;
-  height: 200px;
+  min-height: 200px;
   display: flex;
   gap: ${props => props.theme.spacing.large};
   flex-direction: row;
@@ -36,5 +35,14 @@ const StyledNewsLetter = styled.section`
 
   .newsletter__titles{
     max-width: 400px;
+  }
+  
+  .newsletter__input{
+    width: 100%;
+    max-width: 500px
+  }
+  
+  @media (max-width: ${p => p.theme.breakpoints.tablet}){
+    flex-direction: column; 
   }
 `

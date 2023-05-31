@@ -17,13 +17,15 @@ export const BookCard = ({book}:PropsBookCard) => {
   return(
     <StyledBookCard>
       <div className="book__header">
-        <SectionTitle dark_mode="yellow" bold> Sobre o livro: </SectionTitle>
-        <div className="book__actions">
-          <img src={Sacola} alt="icone sacola" />
-          <img src={Favoritos} alt="icone de favoritos" />
+        <div className="book__about">
+          <SectionTitle dark_mode="yellow" bold> Sobre o livro: </SectionTitle>
+          <div className="book__actions">
+            <img src={Sacola} alt="icone sacola" />
+            <img src={Favoritos} alt="icone de favoritos" />
+          </div>
         </div>
+        <h3 className="book__title"> {book.title} </h3>
       </div>
-      <h3 className="book__title"> {book.title} </h3>
       <div className="book__info">
         <p className="book__description"> {book.description} </p>
         <p className="book__author"> Por: {book.author} </p>
@@ -43,21 +45,21 @@ export const BookCard = ({book}:PropsBookCard) => {
 
 
 const StyledBookCard = styled.article`
-  height: 396px;
+  min-height: 396px;
   border-radius: ${props => props.theme.spacing.largeBorderRadius};
   box-shadow: 1px 1px 10px ${props => props.theme.colors.black};
   padding: 48px;
   display: grid;
 
-  .book__header{
+  .book__about{
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 
     .book__actions{
       display: flex;
-      flex-flow: row wrap;
+      flex-flow: row nowrap;
       justify-content: space-between;
       align-items: center;
       gap: ${props => props.theme.spacing.large};
@@ -68,6 +70,12 @@ const StyledBookCard = styled.article`
     color: ${props => props.theme.colors.darkBlue};
     font-size: ${props => props.theme.typography.size.large};
     font-weight: ${props => props.theme.weight.bold};
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 55px;
+    overflow: hidden;
   }
 
   .book__info{
@@ -91,6 +99,7 @@ const StyledBookCard = styled.article`
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: end;
+    gap: ${p => p.theme.spacing.medium};
 
     .book__price{
       span{
@@ -106,6 +115,29 @@ const StyledBookCard = styled.article`
     .book__button{
       max-width: 169px;
       max-height: 86px;
+    }
+  }
+  
+  @media (max-width: ${p => p.theme.breakpoints.large_cellphone}){
+    padding: ${props => props.theme.spacing.medium};
+    min-height: 334px;
+    
+    .book__priceContainer{
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .book__header{
+      display: flex;
+      flex-flow: row-reverse nowrap;
+      justify-content: space-between;
+      gap: ${p => p.theme.spacing.medium};
+      .book__about{
+        h2{
+          display:none;
+        }
+      }
     }
   }
 `

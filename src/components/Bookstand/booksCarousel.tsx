@@ -17,10 +17,10 @@ export const BooksCarousel = ({books, onSelectBook}:PropsBooksCarousel) => {
 }
 
 const StyledBookCarousel = styled.section`
-  max-width: 100%;
+  width: 100%;
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: ${p => p.theme.spacing.large};
   align-items: center;
   justify-content: space-between;
-  grid-template-columns: auto auto auto;
-  gap: ${props => props.theme.spacing.medium};
 `
