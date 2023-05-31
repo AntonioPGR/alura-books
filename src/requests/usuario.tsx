@@ -1,22 +1,26 @@
 import axios from "axios"
 
 
-export const cadastrarUsuario = (usuario:IUserSignUp, thenCallBack:voidFunction, catchCallBack:voidFunction) => {
+export const cadastrarUsuario = (usuario:IUserSignUp, thenCallBack:(access_token:string) => void, catchCallBack:(status:number, message:string) => void) => {
   axios.post('http://localhost:8000/public/registrar', usuario)
-    .then(() => {
-      thenCallBack()
+    .then((response) => {
+      const data = response.data
+      thenCallBack(data.access_token)
     })
-    .catch(() => {
-      catchCallBack()
+    .catch((response) => {
+      const error = response.response.data
+      catchCallBack(error.status, error.message)
     })
 }
 
-export const logarUsuario = (usuario:IUserLogin, thenCallBack:voidFunction, catchCallBack:voidFunction) => {
+export const logarUsuario = (usuario:IUserLogin, thenCallBack:(access_token:string) => void, catchCallBack:(status:number, message:string) => void) => {
   axios.post('http://localhost:8000/public/login', usuario)
-    .then(() => {
-      thenCallBack()
+    .then((response) => {
+      const data = response.data
+      thenCallBack(data.access_token)
     })
-    .catch(() => {
-      catchCallBack()
+    .catch((response) => {
+      const error = response.response.data
+      catchCallBack(error.status, error.message)
     })
 }

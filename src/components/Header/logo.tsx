@@ -1,14 +1,17 @@
 import AluraBooks from 'images/aluraBooks.svg'
 import IconeLogo from 'images/iconeLogo.svg'
+import { Link } from 'react-router-dom'
 import { styled } from 'styled-components'
 
 
 export const Logo = () => {
   return(
-    <StyledLogo>
-      <img className='logo__icon' src={IconeLogo} alt="logo" />
-      <img className='logo__name' src={AluraBooks} alt="nome da loja" />
-    </StyledLogo>
+    <Link to='/'>
+      <StyledLogo>
+        <img className='logo__icon' src={IconeLogo} alt="logo" />
+        <img className='logo__name' src={AluraBooks} alt="nome da loja" />
+      </StyledLogo>
+    </Link>
   )
 }
 

@@ -8,30 +8,51 @@ import Favoritos from 'images/favorito.svg'
 import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
 import { useSetRecoilState } from "recoil"
 import { renderOverflow } from "utils/renderOverflow"
+import { SessionToken } from "utils/sessionToken"
+import { Link } from "react-router-dom"
+import { useState } from "react"
 
 
 export const PersonalLinks = () => {
 
   const setWhatOverflow = useSetRecoilState(StatewhatOverflowIsOpen)
-  const renderOver = renderOverflow()
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(SessionToken.getToken() !== null? true : false)
+  const renderOver = renderOverflow(() => setIsLoggedIn(true))
 
   return(
     <>
       <StyledPersonalLinks>
-        <span className="displayOnSmallDevice">
-          <a className="personalLink__link" href="#" target="_self">
-            <img src={Favoritos} alt="icone de favoritos" />
-            <span> favoritos </span>
-          </a>
-        </span>
-        <a className="personalLink__link" href="#" target="_self">
-          <img src={Sacola} alt="icone sacola" />
-          <span> Minha sacola </span>
-        </a>
-        <button className="personalLink__link" onClick={() => setWhatOverflow('login')}>
-          <img src={Perfil} alt="icone meu perfil" />
-          <span> Cadastrar </span>
-        </button>
+        {
+          isLoggedIn &&
+          (
+            <>
+              <span className="displayOnSmallDevice">
+                <a className="personalLink__link" href="#" target="_self">
+                  <img src={Favoritos} alt="icone de favoritos" />
+                  <span> favoritos </span>
+                </a>
+              </span>
+              <Link to={'/perfil/produtos'} className="personalLink__link" target="_self">
+                <img src={Sacola} alt="icone sacola" />
+                <span> Minha sacola </span>
+              </Link>
+              <button className="personalLink__link" onClick={() => {
+                SessionToken.setToken(null)
+                setIsLoggedIn(false)
+              }}>
+                <img src={Perfil} alt="icone meu perfil" />
+                <span> Sair </span>
+              </button>
+            </>
+          )
+        }
+        {
+          !isLoggedIn &&
+          <button className="personalLink__link" onClick={() => setWhatOverflow('login')}>
+            <img src={Perfil} alt="icone meu perfil" />
+            <span> Cadastrar </span>
+          </button>
+        }
       </StyledPersonalLinks>
       {
         renderOver()

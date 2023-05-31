@@ -10,17 +10,20 @@ import { GlobalStyle } from 'styles/global';
 import { ResetCSS } from 'styles/reset';
 import { defaultTheme } from 'styles/themes';
 import { RecoilRoot } from 'recoil';
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const Index = () => {
   return(
     <StrictMode>
-      <RecoilRoot>
-        <ThemeProvider theme={defaultTheme}>
-          <ResetCSS />
-          <GlobalStyle />
-          <App />
-        </ThemeProvider>
-      </ RecoilRoot>
+      <Router>
+        <RecoilRoot>
+          <ThemeProvider theme={defaultTheme}>
+            <ResetCSS />
+            <GlobalStyle />
+            <App />
+          </ThemeProvider>
+        </ RecoilRoot>
+      </Router>
     </StrictMode>
   )
 }

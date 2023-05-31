@@ -8,9 +8,10 @@ import { createCleanForm } from "utils/createCleanForm"
 
 
 interface PropsSignUpForm{
-  onClose: () => void
+  onClose: voidFunction
+  onLogin?: voidFunction
 }
-export const SignUpForm = ({onClose}:PropsSignUpForm) => {
+export const SignUpForm = ({onClose, onLogin}:PropsSignUpForm) => {
 
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -36,6 +37,7 @@ export const SignUpForm = ({onClose}:PropsSignUpForm) => {
     const thenCallback = () => {
       cleanForm()
       onClose()
+      if(onLogin){onLogin()}
       alert('Usuario cadastrado com sucesso')
     }
     const catchCallback = () => {

@@ -7,16 +7,17 @@ import { logarUsuario } from "requests/usuario"
 import { createCleanForm } from "utils/createCleanForm"
 import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
 import { useSetRecoilState } from "recoil"
+import { SessionToken } from "utils/sessionToken"
 
 
 interface PropsLoginForm{
-  onClose: () => void
+  onClose: voidFunction,
+  onLogin?: voidFunction
 }
-export const LoginForm = ({onClose}:PropsLoginForm) => {
+export const LoginForm = ({onClose, onLogin}:PropsLoginForm) => {
 
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
-
   const cleanForm = createCleanForm([setEmail, setSenha])
 
   const handleSubmit = (ev:React.FormEvent<HTMLFormElement>) => {
@@ -26,13 +27,15 @@ export const LoginForm = ({onClose}:PropsLoginForm) => {
       email: email,
       senha: senha
     }
-    const thenCallback = () => {
+    const thenCallback = (acces_token:string) => {
+      SessionToken.setToken(acces_token)
       cleanForm()
       onClose()
+      if(onLogin){onLogin()}
       alert('Usuario logado com sucesso')
     }
-    const catchCallback = () => {
-      alert('Não foi possivel logar o usuario')
+    const catchCallback= (status:number, message:string) => {
+      alert(`${status}: ${message}`)
     }
 
     logarUsuario(loginusuario, thenCallback, catchCallback)
