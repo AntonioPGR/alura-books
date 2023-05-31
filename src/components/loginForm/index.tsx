@@ -47,7 +47,7 @@ export const LoginForm = ({onClose, onLogin}:PropsLoginForm) => {
   return (
     <OverScreen onClose={onClose} title="Login">
       <StyledLoginForm>
-        <section>
+        <section className="login__image">
           <img src={ImagemLogin} alt="Pessoa realizando login através de um monitor com uma chave" />
         </section>
         <section className="login__content">
@@ -86,14 +86,14 @@ const StyledLoginForm = styled.section`
     display: flex;
     flex-flow: column nowrap;
     gap: ${props => props.theme.spacing.small};
-
-    .formActions{
-      display: flex;
-      flex-flow: row nowrap;
-      gap: ${props => props.theme.spacing.small};
-      align-items: center;
-      justify-content: space-between;
-    }
+  }
+  
+  .formActions{
+    display: flex;
+    flex-flow: row wrap;
+    gap: ${props => props.theme.spacing.small};
+    align-items: center;
+    justify-content: space-between;
   }
 
   .login__footer{
@@ -101,7 +101,25 @@ const StyledLoginForm = styled.section`
     border-top: 2px solid ${props => props.theme.colors.darkBlue};
 
     display: flex;
+    flex-flow: row wrap;
+    gap: ${props => props.theme.spacing.large};
     align-items: center;
     justify-content: space-between;
+  }
+  
+  @media (max-width: ${p => p.theme.breakpoints.laptop}){
+    grid-template-columns: 1fr;
+    .login__image{
+      display: none
+    }
+  }
+  
+  @media (max-width: ${p => p.theme.breakpoints.large_cellphone}){
+    .login__footer{
+      justify-content: center;
+    }
+    .formActions{
+      justify-content: center;
+    }
   }
 `

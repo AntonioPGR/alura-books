@@ -51,7 +51,7 @@ export const SignUpForm = ({onClose, onLogin}:PropsSignUpForm) => {
   return (
     <OverScreen onClose={onClose} title="Cadastro">
       <StyledSignUpForm>
-        <div>
+        <div className="signUp__image">
           <img src={ImagemLogin} alt="Pessoa realizando login através de um monitor com uma chave" />
         </div>
         <form onSubmit={(ev) => handleSubmit(ev)} className="signUpForm__form">
@@ -83,10 +83,26 @@ const StyledSignUpForm = styled.section`
     flex-flow: column nowrap;
     gap: ${props => props.theme.spacing.small};
 
-    .form__complementsInput{
-      display: grid;
-      gap: ${props => props.theme.spacing.small};
-      grid-template-columns: 4fr 3fr;
+  }
+  
+  .form__complementsInput{
+    display: grid;
+    gap: ${props => props.theme.spacing.small};
+    grid-template-columns: 4fr 3fr;
+  }
+  
+  @media (max-width: ${p => p.theme.breakpoints.laptop}){
+    grid-template-columns: 1fr;
+    width: 100%;
+    
+    .signUp__image{
+      display:none
     }
   }
+  
+  @media (max-width: ${props => props.theme.breakpoints.tablet}){
+    .form__complementsInput{
+      display: block;
+    }
+  })
 `

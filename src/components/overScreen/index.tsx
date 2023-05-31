@@ -12,7 +12,7 @@ export const OverScreen = ({children, title, onClose}:PropsOverScreen) => {
 
   return(
     <StyledOverScreen>
-      <section>
+      <section className="overScreen__board">
         <header> 
           <SectionTitle bold dark_mode="yellow" > {title} </SectionTitle>
           <div className="closeIconContainer" onClick={onClose}>
@@ -39,7 +39,13 @@ const StyledOverScreen = styled.div`
   align-items: center;
   justify-content: center;
 
-  section{
+  .overScreen__board{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: ${p => p.theme.spacing.medium};
+    
     background-color: ${props => props.theme.colors.white};
     padding: ${props => props.theme.spacing.large};
     border-radius: ${props => props.theme.spacing.largeBorderRadius};
@@ -56,5 +62,13 @@ const StyledOverScreen = styled.div`
       cursor: pointer;
     }
 
+  }
+  
+  @media (max-width: ${p => p.theme.breakpoints.laptop}){
+    .overScreen__board{
+      min-height: 100vh;
+      width: 100vw;
+      border-radius: 0;
+    }
   }
 `
