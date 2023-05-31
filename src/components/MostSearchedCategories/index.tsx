@@ -23,7 +23,7 @@ export const MostSearchedCategories : React.FC = () => {
 
 
 const StyledMostSearchedCategories = styled.section`
-  height: 418px;
+  min-height: 418px;
   background-image: ${props => props.theme.colors.gradient};
 
   display: flex;
@@ -31,6 +31,7 @@ const StyledMostSearchedCategories = styled.section`
   align-items: center;
   justify-content: center;
   gap: ${props => props.theme.spacing.large};
+  padding: ${props => props.theme.spacing.large};
 
   .mostSearchedCategories__categories{
     display: flex;
@@ -39,13 +40,16 @@ const StyledMostSearchedCategories = styled.section`
     justify-content: center;
     gap: ${props => props.theme.spacing.medium};
     max-width: 685px;
-
-    li{
-      padding: ${props => props.theme.spacing.large};
-      color: ${props => props.theme.colors.white};
-      font-size: ${props => props.theme.typography.size.large };
-      font-weight: ${props => props.theme.weight.bold };
-      background-color: ${props => props.theme.colors.yellow};
+  }
+  
+  @media (max-width: ${p => p.theme.breakpoints.tablet}){
+    .mostSearchedCategories__categories{
+      grid-template-columns: 1fr 1fr;
+      display: grid;
+    
+      button{
+        height: 100%;
+      }
     }
   }
 

@@ -70,6 +70,11 @@ const StyledFooter = styled.footer`
         color: ${p => p.theme.colors.gray};
       }
     }
-
+  }
+  
+  @media (max-width: ${p => p.theme.breakpoints.laptop}){
+    .footer__schools{
+      display: none;
+    }
   }
 `

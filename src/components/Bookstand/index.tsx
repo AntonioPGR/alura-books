@@ -43,4 +43,11 @@ const StyledBookstand = styled.section`
     grid-template-columns: auto 550px;
     gap: ${props => props.theme.spacing.large};
   }
+  
+  @media (max-width: 1224px){
+    .content{
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto;
+    }
+  }
 `
