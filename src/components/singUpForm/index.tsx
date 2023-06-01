@@ -5,13 +5,14 @@ import { styled } from "styled-components"
 import { OverScreen } from "components/overScreen"
 import { cadastrarUsuario } from "requests/usuario"
 import { createCleanForm } from "utils/createCleanForm"
+import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
+import { useSetRecoilState } from "recoil"
 
 
 interface PropsSignUpForm{
   onClose: voidFunction
-  onLogin?: voidFunction
 }
-export const SignUpForm = ({onClose, onLogin}:PropsSignUpForm) => {
+export const SignUpForm = ({onClose}:PropsSignUpForm) => {
 
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -22,6 +23,7 @@ export const SignUpForm = ({onClose, onLogin}:PropsSignUpForm) => {
   const [confirmacaoSenha, setConfirmacaoSenha] = useState("")
 
   const cleanForm = createCleanForm([setNome, setEmail, setEndereco, setComplemento, setCep, setSenha, setConfirmacaoSenha])
+  const setWhatOverflow = useSetRecoilState(StatewhatOverflowIsOpen)
 
   const handleSubmit = (ev:React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault()
@@ -37,8 +39,7 @@ export const SignUpForm = ({onClose, onLogin}:PropsSignUpForm) => {
     const thenCallback = () => {
       cleanForm()
       onClose()
-      if(onLogin){onLogin()}
-      alert('Usuario cadastrado com sucesso')
+      setWhatOverflow('signUp')
     }
     const catchCallback = () => {
       alert('Não foi possivel criar o usuario')
@@ -104,5 +105,5 @@ const StyledSignUpForm = styled.section`
     .form__complementsInput{
       display: block;
     }
-  })
+  }
 `

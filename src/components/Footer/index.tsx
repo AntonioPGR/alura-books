@@ -73,6 +73,8 @@ const StyledFooter = styled.footer`
   }
   
   @media (max-width: ${p => p.theme.breakpoints.laptop}){
+    grid-template-columns: 1fr;
+
     .footer__schools{
       display: none;
     }

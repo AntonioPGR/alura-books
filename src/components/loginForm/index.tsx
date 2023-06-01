@@ -31,8 +31,6 @@ export const LoginForm = ({onClose, onLogin}:PropsLoginForm) => {
       SessionToken.setToken(acces_token)
       cleanForm()
       onClose()
-      if(onLogin){onLogin()}
-      alert('Usuario logado com sucesso')
     }
     const catchCallback= (status:number, message:string) => {
       alert(`${status}: ${message}`)

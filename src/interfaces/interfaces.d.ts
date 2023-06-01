@@ -35,3 +35,10 @@ declare interface IUserLogin{
   email: string,
   senha: string,
 }
+
+declare interface IOrder{
+  id: number,
+  order_date: string,
+  delivery_date: string,
+  cost: number
+}

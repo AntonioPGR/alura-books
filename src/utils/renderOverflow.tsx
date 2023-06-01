@@ -15,7 +15,7 @@ export const renderOverflow = (onSubmitWithSuccess?:voidFunction) => {
       case "login":
         return <LoginForm onClose={onClose} onLogin={onSubmitWithSuccess} />;
       case "signUp":
-        return <SignUpForm onClose={onClose} onLogin={onSubmitWithSuccess} />;
+        return <SignUpForm onClose={onClose} />;
       default:
         return "";
     }

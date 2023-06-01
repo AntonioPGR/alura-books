@@ -3,16 +3,13 @@ import { AbBotao } from "ds-alurabooks"
 import { styled } from "styled-components"
 import Sacola from 'images/sacola.svg'
 import Favoritos from 'images/favorito.svg'
+import { PriceFormatterToBRL } from "utils/priceFormatter"
 
 
 interface PropsBookCard {
   book: IBook
 }
 export const BookCard = ({book}:PropsBookCard) => {
-  const priceFormatter = new Intl.NumberFormat('pt-br', {
-    style: 'currency',
-    currency: 'BRL'
-  })
 
   return(
     <StyledBookCard>
@@ -33,7 +30,7 @@ export const BookCard = ({book}:PropsBookCard) => {
       <div className="book__priceContainer">
         <div className="book__price">
           <span>A partir de</span>
-          <p>{priceFormatter.format(book.price)}</p>
+          <p>{PriceFormatterToBRL.format(book.price)}</p>
         </div>
         <div className="book__button">
           <AbBotao texto="Comprar" />

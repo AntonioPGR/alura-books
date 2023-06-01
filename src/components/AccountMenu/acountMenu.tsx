@@ -16,7 +16,8 @@ export const AccountMenu = () => {
 const StyledAccountMenu = styled.nav`
   display: flex;
   flex-flow: column nowrap;
-  max-width: 200px;
+  max-width: 130px;
+  width: 100%;
 
   .accountMenu__link{
     padding: ${props => props.theme.spacing.medium};

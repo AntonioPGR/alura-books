@@ -14,7 +14,7 @@ export const Book = ({book, onClick}:PropsBook) => {
 }
 
 const StyledBook = styled.article`
-  max-width: 300px;
+  max-width: 250px;
   height: 100%;
   margin: auto;
 

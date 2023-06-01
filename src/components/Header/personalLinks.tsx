@@ -32,7 +32,7 @@ export const PersonalLinks = () => {
                   <span> favoritos </span>
                 </a>
               </span>
-              <Link to={'/perfil/produtos'} className="personalLink__link" target="_self">
+              <Link to={'/perfil/pedidos'} className="personalLink__link" target="_self">
                 <img src={Sacola} alt="icone sacola" />
                 <span> Minha sacola </span>
               </Link>
@@ -50,7 +50,7 @@ export const PersonalLinks = () => {
           !isLoggedIn &&
           <button className="personalLink__link" onClick={() => setWhatOverflow('login')}>
             <img src={Perfil} alt="icone meu perfil" />
-            <span> Cadastrar </span>
+            <span> Entrar </span>
           </button>
         }
       </StyledPersonalLinks>
