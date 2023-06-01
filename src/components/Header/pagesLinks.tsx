@@ -15,13 +15,13 @@ export const PagesLinks = () => {
 
   return(
     <StyledPagesLinks is_menu_open={isMenuOpen? 1 : 0}>
-      <img onClick={() => setIsMenuOpen(!isMenuOpen)} src={isMenuOpen? MenuIconWhite : MenuIcon} alt="Menu de links" className="pages__menu" />
+      <img onClick={() => setIsMenuOpen(!isMenuOpen)} src={isMenuOpen? MenuIconWhite : MenuIcon} alt="Menu de links" className="pages__menuIcon" />
       <div className="pages__links">
-        <DropDownMenu title={"Categorias"} links={categories_data} />
-        <a href="#" target="_self">
+        <DropDownMenu title={"Categorias"} titleClassName="personalLink__link" links={categories_data} />
+        <a className="personalLink__link" href="#" target="_self">
           favoritos
         </a>
-        <a href="#" target="_self">
+        <a className="personalLink__link" href="#" target="_self">
           minha estante
         </a>
       </div>
@@ -33,58 +33,47 @@ interface PropsStyle{
   is_menu_open: 1 | 0
 }
 const StyledPagesLinks = styled.div<PropsStyle>`
-  grid-area: pages_links;
-
-  .pages__menu{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  
+  .pages__menuIcon{
     display: none;
+    width: 100%;
+    height: auto;
   }
-
+  
   .pages__links{
     display: flex;
     flex-flow: row nowrap;
-    gap: ${props => props.theme.spacing.small};
     align-items: center;
     justify-content: flex-start;
-
-    a{
-      font-size: ${props => props.theme.typography.size.small};
-      text-transform: uppercase;
-      text-align: center;
-      padding: 10px;
-    
-      &:hover{
-        background-image: ${props => props.theme.colors.gradient};
-        color: #FFF;
-      }
+  }
+  
+  .personalLink__link{
+    padding: ${p => p.theme.spacing.small} ${p => p.theme.spacing.medium};
+    text-transform: uppercase;
+    &:hover{
+      background-image: ${p => p.theme.colors.gradient};
+      color: ${p => p.theme.colors.white};
     }
   }
-
-  @media (max-width: ${props => props.theme.breakpoints.laptop}){
-    background-image: ${props => props.is_menu_open? props.theme.colors.gradient : 'none'};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-
-    .pages__menu{
+  
+  @media (max-width: ${p => p.theme.breakpoints.laptop}){
+    .pages__menuIcon{
       display: block;
-      height: 40px;
-      width: 40px;
     }
     
     .pages__links{
-      display: ${props => props.is_menu_open? 'flex' : 'none'};
-      min-width: 300px;
-      position: absolute;
-      top: 80px;
-      right: ${props => props.theme.spacing.large};
+      display: ${p => p.is_menu_open? 'flex' : 'none'};
       flex-flow: column nowrap;
-      align-items: flex-end;
-      gap: 0;
-      background-color: #FFF;
-      a{
-        padding: 16px 24px;
-      }
+      align-items: center;
+      justify-content: flex-end;
+      position: absolute;
+      top: 200px;
+      left: 200px;
     }
   }
+  
 `

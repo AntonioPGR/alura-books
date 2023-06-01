@@ -3,10 +3,11 @@ import styled from "styled-components"
 
 interface PropsDropDownMenu{
     links: ILink[],
-    title: children | string
+    title: children | string,
+    titleClassName: string
 }
 
-export const DropDownMenu = ({links, title}:PropsDropDownMenu) => {
+export const DropDownMenu = ({links, title, titleClassName}:PropsDropDownMenu) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   
   useEffect(() => {
@@ -18,7 +19,7 @@ export const DropDownMenu = ({links, title}:PropsDropDownMenu) => {
 
   return(
     <StyledPagesLinks is_menu_open={isMenuOpen? 1 : 0} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-      <div className="menu__title" >
+      <div className={titleClassName} >
           {title}
       </div>
       <div className="menu__links">

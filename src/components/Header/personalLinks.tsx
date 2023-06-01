@@ -5,19 +5,20 @@ import { styled } from "styled-components"
 import Sacola from 'images/sacola.svg'
 import Perfil from 'images/perfil.svg'
 import Favoritos from 'images/favorito.svg'
+import Livros from 'images/books.svg'
 import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
-import { useSetRecoilState } from "recoil"
+import { useRecoilValue, useSetRecoilState } from "recoil"
 import { renderOverflow } from "utils/renderOverflow"
 import { SessionToken } from "utils/sessionToken"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { StateIsLoggedIn } from "states/isLoggendIn"
 
 
 export const PersonalLinks = () => {
 
+  const isLoggedIn = useRecoilValue(StateIsLoggedIn)
   const setWhatOverflow = useSetRecoilState(StatewhatOverflowIsOpen)
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(SessionToken.getToken() !== null? true : false)
-  const renderOver = renderOverflow(() => setIsLoggedIn(true))
+  const renderOver = renderOverflow()
 
   return(
     <>
@@ -26,19 +27,12 @@ export const PersonalLinks = () => {
           isLoggedIn &&
           (
             <>
-              <span className="displayOnSmallDevice">
-                <a className="personalLink__link" href="#" target="_self">
-                  <img src={Favoritos} alt="icone de favoritos" />
-                  <span> favoritos </span>
-                </a>
-              </span>
               <Link to={'/perfil/pedidos'} className="personalLink__link" target="_self">
-                <img src={Sacola} alt="icone sacola" />
+                <img src={Sacola} alt="icone de sacola" />
                 <span> Minha sacola </span>
               </Link>
               <button className="personalLink__link" onClick={() => {
                 SessionToken.setToken(null)
-                setIsLoggedIn(false)
               }}>
                 <img src={Perfil} alt="icone meu perfil" />
                 <span> Sair </span>
@@ -89,6 +83,11 @@ const StyledPersonalLinks = styled.div`
   
     &:hover > span{
       text-decoration: underline;
+    }
+    
+    img{
+      height: 40px;
+      width: auto;
     }
 
   }
