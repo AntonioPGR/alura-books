@@ -27,7 +27,7 @@ const StyledHeader = styled.header`
 
   @media (max-width: ${props => props.theme.breakpoints.laptop}){
     grid-template-areas: "logo personal_links pages_links";
-    grid-template-columns: 40px auto 80px ;
+    grid-template-columns: 40px auto 40px ;
   }
 
   @media (max-width: 360px){

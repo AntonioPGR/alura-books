@@ -12,13 +12,13 @@ import { SessionToken } from "utils/sessionToken"
 
 interface PropsLoginForm{
   onClose: voidFunction,
-  onLogin?: voidFunction
 }
-export const LoginForm = ({onClose, onLogin}:PropsLoginForm) => {
+export const LoginForm = ({onClose}:PropsLoginForm) => {
 
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
   const cleanForm = createCleanForm([setEmail, setSenha])
+  const setWhatOverflow = useSetRecoilState(StatewhatOverflowIsOpen)
 
   const handleSubmit = (ev:React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault()
@@ -27,20 +27,16 @@ export const LoginForm = ({onClose, onLogin}:PropsLoginForm) => {
       email: email,
       senha: senha
     }
-    const thenCallback = (acces_token:string) => {
-      SessionToken.setToken(acces_token)
+    const thenCallback = (access_token:string) => {
+      SessionToken.setToken(access_token)
       cleanForm()
       onClose()
     }
     const catchCallback= (status:number, message:string) => {
       alert(`${status}: ${message}`)
     }
-
     logarUsuario(loginusuario, thenCallback, catchCallback)
-
   }
-  
-  const setWhatOverflow = useSetRecoilState(StatewhatOverflowIsOpen)
   
   return (
     <OverScreen onClose={onClose} title="Login">
