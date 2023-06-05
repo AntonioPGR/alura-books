@@ -11,9 +11,9 @@ export const Order = ({order}:PropsOrder) => {
     <StyledOrder>
       <section className="order__infoContainer">
         <p>Pedido: <strong className="order__info">{order.id}</strong> </p>
-        <p>Data do pedido: <strong className="order__info">{order.order_date}</strong> </p>
-        <p>Valor total: <strong className="order__info">{PriceFormatterToBRL.format(order.cost)}</strong> </p>
-        <p>Entrega realizada em: <strong className="order__info">{order.delivery_date}</strong> </p>
+        <p>Data do pedido: <strong className="order__info">{order.data}</strong> </p>
+        <p>Valor total: <strong className="order__info">{PriceFormatterToBRL.format(order.total)}</strong> </p>
+        <p>Entrega realizada em: <strong className="order__info">{order.entrega}</strong> </p>
       </section>
       <div className="order__viewButton">
         <AbBotao texto="Detalhes" />
@@ -26,6 +26,7 @@ const StyledOrder = styled.li`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center ;
   border-bottom: 1px solid ${props => props.theme.colors.darkBlue};
   padding: ${props => props.theme.spacing.medium};
 

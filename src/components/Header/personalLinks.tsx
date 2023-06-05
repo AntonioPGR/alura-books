@@ -4,14 +4,12 @@ import { styled } from "styled-components"
 // IMAGES
 import Sacola from 'images/sacola.svg'
 import Perfil from 'images/perfil.svg'
-import Favoritos from 'images/favorito.svg'
-import Livros from 'images/books.svg'
 import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import { renderOverflow } from "utils/renderOverflow"
-import { SessionToken } from "utils/sessionToken"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { StateIsLoggedIn } from "states/isLoggendIn"
+import { SessionToken } from "utils/sessionToken"
 
 
 export const PersonalLinks = () => {
@@ -19,7 +17,15 @@ export const PersonalLinks = () => {
   const isLoggedIn = useRecoilValue(StateIsLoggedIn)
   const setWhatOverflow = useSetRecoilState(StatewhatOverflowIsOpen)
   const renderOver = renderOverflow()
+  const setIsLoggedIn = useSetRecoilState(StateIsLoggedIn)
+  const navigate = useNavigate()
 
+  const logout = () => {
+    setIsLoggedIn(false)
+    SessionToken.excludeToken()
+    navigate('/')
+  }
+  
   return(
     <>
       <StyledPersonalLinks>
@@ -31,9 +37,7 @@ export const PersonalLinks = () => {
                 <img src={Sacola} alt="icone de sacola" />
                 <span> Minha sacola </span>
               </Link>
-              <button className="personalLink__link" onClick={() => {
-                SessionToken.setToken(null)
-              }}>
+              <button className="personalLink__link" onClick={logout}>
                 <img src={Perfil} alt="icone meu perfil" />
                 <span> Sair </span>
               </button>

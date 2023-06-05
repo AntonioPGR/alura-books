@@ -1,14 +1,40 @@
 import { SectionTitle } from "components/Title"
 import { styled } from "styled-components"
+import { useEffect, useState } from "react"
 import { Order } from "./order"
+import { OrdersRequester } from "requests/pedidos"
+import { SessionToken } from "utils/sessionToken"
 
 
 export const Orders = () => {
+  const [orders, setOrders] = useState<IOrder[] | null>([])
+  
+  useEffect(() => {
+    const token = SessionToken.getToken();
+    if(token !== null){
+      OrdersRequester.findOrders(token)
+        .then((orders) => setOrders(orders.data))
+        .catch(() => setOrders(null))
+    }
+  }, [])
+  
+  const renderOrders = () => {
+    if (orders === null) {
+      return <p> Algo deu errado ao carregar seus pedidos! </p>
+    }
+    if (orders.length === 0){
+      return <p> Sem pedidos encontrados! </p>
+    }
+    return orders.map((order) => <Order key={order.id} order={order} />)
+  }
+
   return(
     <StyledOrders>
       <SectionTitle bold>Pedidos</SectionTitle>
       <ul className="ordersList__list">
-        <Order order={{id: 89019041, order_date: '26/05/2022', cost: 48, delivery_date: '30/03/2022'}} />
+        {
+          renderOrders()
+        }
       </ul>
     </StyledOrders>
   )

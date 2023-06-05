@@ -1,22 +1,35 @@
 import { AccountMenu } from "components/AccountMenu/acountMenu"
 import { CartTitle } from "components/cartTitle"
-import { Outlet } from "react-router-dom"
+import { useEffect } from "react"
+import { Outlet, useNavigate } from "react-router-dom"
 import { styled } from "styled-components"
+import { SessionToken } from "utils/sessionToken"
 
 
 export const Profile = () => {
+
+  const navigate = useNavigate()
+  
+  useEffect(() => {
+    const token = SessionToken.getToken();
+    if(token === null){ 
+      navigate('/')
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return(
-    <StyledOrders>
+    <StyledProfile>
       <CartTitle title="Minha sacola" />
       <div className="orders__content">
         <AccountMenu />
         <Outlet />
       </div>
-    </StyledOrders>
+    </StyledProfile>
   )
 }
 
-const StyledOrders = styled.section`
+const StyledProfile = styled.section`
   .orders__content{
     padding: ${props => props.theme.spacing.large};
     max-width: 1248px;

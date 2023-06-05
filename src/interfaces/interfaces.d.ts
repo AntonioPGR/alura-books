@@ -5,12 +5,6 @@ declare interface ILink{
   target: '_Blank' | '_self'
 }
 
-declare type children = ReactNode
-
-declare type voidFunction = () => void
-
-declare type voidFunctionWithParameter<T> = (element:T) => void
-
 declare interface IBook {
   id: number,
   title: string,
@@ -30,15 +24,31 @@ declare interface IUserSignUp{
   cep: string
 }
 
-
 declare interface IUserLogin{
   email: string,
   senha: string,
 }
 
+declare interface IUserResponse{
+  access_token: string,
+  user: {
+    nome: string,
+    email: string,
+    endereco: string,
+    complemento: string,
+    cep: string
+  }
+}
+
 declare interface IOrder{
   id: number,
-  order_date: string,
-  delivery_date: string,
-  cost: number
+  data: string,
+  entrega: string,
+  total: number
 }
+
+declare type children = ReactNode
+
+declare type voidFunction = () => void
+
+declare type voidFunctionWithParameter<T> = (element:T) => void

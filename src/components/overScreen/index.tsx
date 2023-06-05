@@ -1,21 +1,32 @@
 import { SectionTitle } from "components/Title"
 import { styled } from "styled-components"
 import Cross from 'images/cross.svg'
+import { useSetRecoilState } from "recoil"
+import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
 
 
 interface PropsOverScreen{
   children: children,
   title: string,
-  onClose: () => void
+  onClose?: () => void
 }
 export const OverScreen = ({children, title, onClose}:PropsOverScreen) => {
+
+  const setWhatOverscreen = useSetRecoilState(StatewhatOverflowIsOpen);
+
+  const onCloseOverscreen = () => {
+    if(onClose){
+      onClose()
+    }
+    setWhatOverscreen('')
+  }
 
   return(
     <StyledOverScreen>
       <section className="overScreen__board">
         <header> 
           <SectionTitle bold dark_mode="yellow" > {title} </SectionTitle>
-          <div className="closeIconContainer" onClick={onClose}>
+          <div className="closeIconContainer" onClick={onCloseOverscreen}>
             <img src={Cross} alt="Fechar menu flutuante"/>
           </div>
         </header>

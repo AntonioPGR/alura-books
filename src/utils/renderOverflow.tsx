@@ -1,19 +1,18 @@
 import { LoginForm } from "components/loginForm";
 import { SignUpForm } from "components/singUpForm";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen";
 
 
 export const renderOverflow = () => {
   return () => {
-    const [whatOverflow, setWhatOverflow] = useRecoilState(StatewhatOverflowIsOpen);
-    const onClose = () => setWhatOverflow("");
+    const whatOverflow = useRecoilValue(StatewhatOverflowIsOpen);
 
     switch (whatOverflow) {
       case "login":
-        return <LoginForm onClose={onClose} />;
+        return <LoginForm />;
       case "signUp":
-        return <SignUpForm onClose={onClose} />;
+        return <SignUpForm />;
       default:
         return "";
     }

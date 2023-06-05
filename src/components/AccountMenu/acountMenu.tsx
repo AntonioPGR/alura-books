@@ -5,7 +5,7 @@ import { styled } from "styled-components"
 export const AccountMenu = () => {
   return(
     <StyledAccountMenu>
-      <Link className="accountMenu__link" to=''>Pedidos</Link>
+      <Link className="accountMenu__link" to='/perfil/pedidos'>Pedidos</Link>
       <Link className="accountMenu__link" to=''>Trocas</Link>
       <Link className="accountMenu__link" to=''>Cupons</Link>
       <Link className="accountMenu__link" to=''>Seus Dados</Link>

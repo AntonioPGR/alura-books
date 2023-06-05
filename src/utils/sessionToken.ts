@@ -1,12 +1,12 @@
 
 
 export class SessionToken{
-  static setToken(token:string | null){
-    if(token == null){
-      sessionStorage.removeItem('session_token');
-      return
-    }
+  static setToken(token:string){
     sessionStorage.setItem('session_token', token)
+  }
+
+  static excludeToken(){
+    sessionStorage.removeItem('session_token');
   }
 
   static getToken(){

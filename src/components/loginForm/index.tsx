@@ -1,45 +1,50 @@
+// COMPONENTS
 import { AbBotao, AbCampoTexto } from "ds-alurabooks"
-import { useState } from "react"
-import ImagemLogin from 'images/Login-amico 1.png'
-import { styled } from "styled-components"
 import { OverScreen } from "components/overScreen"
-import { logarUsuario } from "requests/usuario"
-import { createCleanForm } from "utils/createCleanForm"
+// REACT
+import { useState } from "react"
+import ImagemLogin from 'images/Login-amico.png'
 import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
 import { useSetRecoilState } from "recoil"
+// STYLES
+import { styled } from "styled-components"
+// UTILS
+import { createCleanForm } from "utils/createCleanForm"
+import { StateIsLoggedIn } from "states/isLoggendIn"
 import { SessionToken } from "utils/sessionToken"
+import { UserRequester } from "requests/usuario"
+import { AxiosError } from "axios"
 
 
-interface PropsLoginForm{
-  onClose: voidFunction,
-}
-export const LoginForm = ({onClose}:PropsLoginForm) => {
+export const LoginForm = () => {
 
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
-  const cleanForm = createCleanForm([setEmail, setSenha])
   const setWhatOverflow = useSetRecoilState(StatewhatOverflowIsOpen)
+  const setIsLoggedIn = useSetRecoilState(StateIsLoggedIn)
+  
+  const cleanForm = createCleanForm([setEmail, setSenha])
 
-  const handleSubmit = (ev:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (ev:React.FormEvent) => {
     ev.preventDefault()
-
     const loginusuario : IUserLogin = {
       email: email,
       senha: senha
     }
-    const thenCallback = (access_token:string) => {
-      SessionToken.setToken(access_token)
-      cleanForm()
-      onClose()
-    }
-    const catchCallback= (status:number, message:string) => {
-      alert(`${status}: ${message}`)
-    }
-    logarUsuario(loginusuario, thenCallback, catchCallback)
+    UserRequester.loginUsuario<IUserResponse>(loginusuario)
+      .then(res => {
+        setWhatOverflow('')
+        SessionToken.setToken(res.data.access_token)
+        setIsLoggedIn(true)
+        cleanForm()
+      })
+      .catch((e:AxiosError) => {
+        alert(`${e.status}: ${e.message}`)
+      })
   }
   
   return (
-    <OverScreen onClose={onClose} title="Login">
+    <OverScreen title="Login">
       <StyledLoginForm>
         <section className="login__image">
           <img src={ImagemLogin} alt="Pessoa realizando login através de um monitor com uma chave" />

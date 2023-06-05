@@ -5,7 +5,7 @@ import { MostSearchedCategories } from "components/MostSearchedCategories"
 import { Footer } from "components/Footer"
 import { Route, Routes } from "react-router-dom"
 import { Profile } from "pages/profile"
-import { Orders } from "components/orders"
+import { Orders } from "components/Orders"
 
 
 export const App = () => {

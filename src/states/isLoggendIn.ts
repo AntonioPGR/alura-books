@@ -1,13 +1,7 @@
-import {selector} from 'recoil'
+import { atom } from 'recoil'
 import { SessionToken } from 'utils/sessionToken'
 
-export const StateIsLoggedIn = selector({
-    key: 'IsLoggedIn',
-    get: () => {
-        const key = SessionToken.getToken();
-        if(key){
-            return true
-        }
-        return false
-    }
+export const StateIsLoggedIn = atom<boolean>({
+    key: 'IsLoggedIn',  
+    default: SessionToken.getToken()? true : false
 })

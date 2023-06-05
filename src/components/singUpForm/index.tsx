@@ -1,18 +1,16 @@
 import { AbBotao, AbCampoTexto } from "ds-alurabooks"
 import { useState } from "react"
-import ImagemLogin from 'images/Login-amico 1.png'
+import ImagemLogin from 'images/Login-amico.png'
 import { styled } from "styled-components"
 import { OverScreen } from "components/overScreen"
-import { cadastrarUsuario } from "requests/usuario"
+import { UserRequester } from "requests/usuario"
 import { createCleanForm } from "utils/createCleanForm"
 import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
 import { useSetRecoilState } from "recoil"
+import { AxiosError } from "axios"
 
 
-interface PropsSignUpForm{
-  onClose: voidFunction
-}
-export const SignUpForm = ({onClose}:PropsSignUpForm) => {
+export const SignUpForm = () => {
 
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -27,7 +25,6 @@ export const SignUpForm = ({onClose}:PropsSignUpForm) => {
 
   const handleSubmit = (ev:React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault()
-
     const novoUsuario : IUserSignUp = {
       nome: nome,
       email: email,
@@ -36,21 +33,18 @@ export const SignUpForm = ({onClose}:PropsSignUpForm) => {
       cep: cep,
       senha: senha
     }
-    const thenCallback = () => {
-      cleanForm()
-      onClose()
-      setWhatOverflow('signUp')
-    }
-    const catchCallback = () => {
-      alert('Não foi possivel criar o usuario')
-    }
-
-    cadastrarUsuario(novoUsuario, thenCallback, catchCallback)
-
+    UserRequester.registerUsuario(novoUsuario)
+      .then(res => {
+        cleanForm()
+        setWhatOverflow('login')
+      })
+      .catch((e:AxiosError) => {
+        alert(`${e.status}: ${e.message}`)
+      })
   }
 
   return (
-    <OverScreen onClose={onClose} title="Cadastro">
+    <OverScreen title="Cadastro">
       <StyledSignUpForm>
         <div className="signUp__image">
           <img src={ImagemLogin} alt="Pessoa realizando login através de um monitor com uma chave" />
