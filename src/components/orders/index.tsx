@@ -3,19 +3,15 @@ import { styled } from "styled-components"
 import { useEffect, useState } from "react"
 import { Order } from "./order"
 import { OrdersRequester } from "requests/pedidos"
-import { SessionToken } from "utils/sessionToken"
 
 
 export const Orders = () => {
   const [orders, setOrders] = useState<IOrder[] | null>([])
   
   useEffect(() => {
-    const token = SessionToken.getToken();
-    if(token !== null){
-      OrdersRequester.findOrders(token)
-        .then((orders) => setOrders(orders.data))
-        .catch(() => setOrders(null))
-    }
+    OrdersRequester.findOrders()
+      .then((orders) => setOrders(orders.data))
+      .catch(() => setOrders(null))
   }, [])
   
   const renderOrders = () => {

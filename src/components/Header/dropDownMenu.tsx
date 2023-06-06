@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 interface PropsDropDownMenu{
-    links: ILink[],
+    links: ICategory[],
     title: children | string,
     titleClassName: string
 }
@@ -26,7 +27,7 @@ export const DropDownMenu = ({links, title, titleClassName}:PropsDropDownMenu) =
         {
           links.map((link, index) => {
             return(
-              <a className="menu__link" href={link.to} key={link.id || index} target={link.target} rel={link.target === '_Blank'? 'norefferer' : ''} > {link.label} </a>
+              <Link className="menu__link" to={`categorias/${link.slug}`} key={link.id || index} target='_self'> {link.nome} </Link>
             )
           })
         }

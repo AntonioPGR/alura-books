@@ -4,20 +4,27 @@ import { styled } from "styled-components"
 // IMAGES
 import MenuIcon from 'images/menu.svg'
 import MenuIconWhite from 'images/menuWhite.svg'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { DropDownMenu } from "./dropDownMenu"
-import { categories_data } from "data/categories"
+import { CategoriesRequester } from "requests/categories"
 
 
 export const PagesLinks = () => {
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [categories, setCategories] = useState<ICategory[]>([]);
+
+  useEffect(() => {
+    CategoriesRequester.getCategories()
+      .then( res => setCategories(res.data))
+      .catch(e => alert(`${e.status}: ${e.message}`))
+  }, [])
 
   return(
     <StyledPagesLinks is_menu_open={isMenuOpen? 1 : 0}>
       <img onClick={() => setIsMenuOpen(!isMenuOpen)} src={isMenuOpen? MenuIconWhite : MenuIcon} alt="Menu de links" className="pages__menuIcon" />
       <div className="pages__links">
-        <DropDownMenu title={"Categorias"} titleClassName="personalLink__link" links={categories_data} />
+        <DropDownMenu title={"Categorias"} titleClassName="personalLink__link" links={categories} />
         <a className="personalLink__link" href="#" target="_self">
           favoritos
         </a>

@@ -1,10 +1,3 @@
-declare interface ILink{
-  id?: number,
-  label: string,
-  to: string,
-  target: '_Blank' | '_self'
-}
-
 declare interface IBook {
   id: number,
   title: string,
@@ -45,6 +38,12 @@ declare interface IOrder{
   data: string,
   entrega: string,
   total: number
+}
+
+declare interface ICategory{
+  id: number,
+	nome: string,
+	slug: string
 }
 
 declare type children = ReactNode

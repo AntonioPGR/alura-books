@@ -7,7 +7,34 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "*.pdf": true,
-    "package.json": true
+    "package.json": true,
+    "public": true,
+    "node_modules": true,
+    "api": true,
+    "build": true,
+    ".vscode": true,
+    ".idea": true,
+    "yarn.lock": true,
+    "tsconfig.json": true,
+    "README.md": true,
+    "package-lock.json": true,
+    "jest.config.js": true,
+    "LICENSE": true,
+    ".gitignore": true
   },
-  "hide-files.files": []
+  "hide-files.files": [
+    "public",
+    "node_modules",
+    "api",
+    "build",
+    ".vscode",
+    ".idea",
+    "yarn.lock",
+    "tsconfig.json",
+    "README.md",
+    "package-lock.json",
+    "jest.config.js",
+    "LICENSE",
+    ".gitignore"
+  ]
 }
