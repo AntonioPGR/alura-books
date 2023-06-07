@@ -1,21 +1,16 @@
 import { SectionTitle } from "components/Title"
 import { styled } from "styled-components"
-import { useEffect, useState } from "react"
 import { Order } from "./order"
-import { OrdersRequester } from "requests/pedidos"
+import { OrdersRequester } from "requests/orders"
+import { useQuery } from "@tanstack/react-query"
 
 
 export const Orders = () => {
-  const [orders, setOrders] = useState<IOrder[] | null>([])
   
-  useEffect(() => {
-    OrdersRequester.findOrders()
-      .then((orders) => setOrders(orders.data))
-      .catch(() => setOrders(null))
-  }, [])
+  const {data:orders} = useQuery(['getOrders'], () => OrdersRequester.findOrders())
   
   const renderOrders = () => {
-    if (orders === null) {
+    if (!orders) {
       return <p> Algo deu errado ao carregar seus pedidos! </p>
     }
     if (orders.length === 0){

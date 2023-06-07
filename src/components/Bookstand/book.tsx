@@ -8,7 +8,7 @@ interface PropsBook {
 export const Book = ({book, onClick}:PropsBook) => {
   return(
     <StyledBook onClick={() => onClick(book)}>
-      <img className='book__cover' src={book.cover}  alt={`Capa do livro ${book.title}`} />
+      <img className='book__cover' src={book.imagemCapa}  alt={`Capa do livro ${book.titulo}`} />
     </StyledBook>
   )
 }

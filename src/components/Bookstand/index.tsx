@@ -10,8 +10,8 @@ interface PropsBookstand {
   title: string,
 }
 export const Bookstand = ({books, title}:PropsBookstand) => {
+  
   const [currentBook, setCurrentBook] = useState(books[0])
-
   return(
     <StyledBookstand>
       <div className="title">

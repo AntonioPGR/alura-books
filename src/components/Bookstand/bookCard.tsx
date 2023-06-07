@@ -11,6 +11,11 @@ interface PropsBookCard {
 }
 export const BookCard = ({book}:PropsBookCard) => {
 
+  const getLowestPrice = () => {
+    const lowestPriceProduct = book.opcoesCompra.reduce((prev, current) => prev.preco < current.preco? prev : current)
+    return lowestPriceProduct.preco
+  }
+
   return(
     <StyledBookCard>
       <div className="book__header">
@@ -21,16 +26,16 @@ export const BookCard = ({book}:PropsBookCard) => {
             <img src={Favoritos} alt="icone de favoritos" />
           </div>
         </div>
-        <h3 className="book__title"> {book.title} </h3>
+        <h3 className="book__title"> {book.titulo} </h3>
       </div>
       <div className="book__info">
-        <p className="book__description"> {book.description} </p>
-        <p className="book__author"> Por: {book.author} </p>
+        <p className="book__description"> {book.descricao} </p>
+        <p className="book__author"> Por: {book.autor} </p>
       </div>
       <div className="book__priceContainer">
         <div className="book__price">
           <span>A partir de</span>
-          <p>{PriceFormatterToBRL.format(book.price)}</p>
+          <p>{PriceFormatterToBRL.format(getLowestPrice())}</p>
         </div>
         <div className="book__button">
           <AbBotao texto="Comprar" />

@@ -31,7 +31,8 @@ export const LoginForm = () => {
       email: email,
       senha: senha
     }
-    UserRequester.loginUsuario<IUserResponse>(loginusuario)
+
+    UserRequester.loginUsuario(loginusuario)
       .then(res => {
         setWhatOverflow('')
         SessionToken.setToken(res.data.access_token)
@@ -50,7 +51,7 @@ export const LoginForm = () => {
           <img src={ImagemLogin} alt="Pessoa realizando login através de um monitor com uma chave" />
         </section>
         <section className="login__content">
-          <form onSubmit={(ev) => handleSubmit(ev)} className="loginForm__form">
+          <form onSubmit={handleSubmit} className="loginForm__form">
             <AbCampoTexto value={email} onChange={setEmail} label="Email" placeholder="seuemail@maneiro.com" />
             <AbCampoTexto value={senha} onChange={setSenha} type="password" placeholder="******" label="Senha" />
             <div className="formActions">

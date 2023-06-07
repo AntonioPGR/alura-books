@@ -1,11 +1,23 @@
 declare interface IBook {
   id: number,
-  title: string,
-  category: string,
-  description: string,
-  author: string,
-  price: number,
-  cover: string
+  categoria: number,
+  titulo: string,
+  slug: string,
+  descricao: string,
+  isbn: string,
+  numeroPaginas: number,
+  publicacao: string,
+  imagemCapa: string,
+  autor: number,
+  opcoesCompra: IPurchaseOption[],
+  sobre: string,
+}
+
+declare interface IPurchaseOption{
+  id: number,
+  titulo: string,
+  preco: number,
+  formatos?: string[],
 }
 
 declare interface IUserSignUp{
@@ -29,7 +41,7 @@ declare interface IUserResponse{
     email: string,
     endereco: string,
     complemento: string,
-    cep: string
+    cep: string,
   }
 }
 
