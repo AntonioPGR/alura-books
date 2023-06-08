@@ -6,7 +6,7 @@ import MenuIcon from 'images/menu.svg'
 import MenuIconWhite from 'images/menuWhite.svg'
 import { useEffect, useState } from "react"
 import { DropDownMenu } from "./dropDownMenu"
-import { CategoriesRequester } from "requests/categories"
+import { CategoriesRequester } from "requesters/categories"
 
 
 export const PagesLinks = () => {

@@ -8,7 +8,8 @@ export const defaultTheme : DefaultTheme = {
     darkBlue: "#002F52",
     gradient: "linear-gradient(to bottom right, #002F52 60%, #326589)",
     gray: "#858585",
-    lightGray: "#EBECEE"
+    lightGray: "#EBECEE",
+    warnings: "#F00"
   },
   typography:{
     primary: "Poppins, serif",

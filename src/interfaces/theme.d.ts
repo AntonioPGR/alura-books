@@ -10,7 +10,8 @@ declare module 'styled-components' {
       darkBlue: string,
       gray: string,
       lightGray: string,
-      gradient: string
+      gradient: string,
+      warnings: string
     },
     typography:{
       primary: string,

@@ -11,6 +11,10 @@ export const Loader = () => {
 
 
 const StyledLoader = styled.div`
+  width: 100%;
+  text-align: center;
+  padding: ${p => p.theme.spacing.large};
+
   .lds-ring {
     display: inline-block;
     position: relative;

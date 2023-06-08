@@ -3,7 +3,7 @@ import { useState } from "react"
 import ImagemLogin from 'images/Login-amico.png'
 import { styled } from "styled-components"
 import { OverScreen } from "components/overScreen"
-import { UserRequester } from "requests/usuario"
+import { UserRequester } from "requesters/usuario"
 import { createCleanForm } from "utils/createCleanForm"
 import { StatewhatOverflowIsOpen } from "states/whatsOverflowIsOpen"
 import { useSetRecoilState } from "recoil"

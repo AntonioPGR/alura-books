@@ -12,7 +12,7 @@ import { styled } from "styled-components"
 import { createCleanForm } from "utils/createCleanForm"
 import { StateIsLoggedIn } from "states/isLoggendIn"
 import { SessionToken } from "utils/sessionToken"
-import { UserRequester } from "requests/usuario"
+import { UserRequester } from "requesters/usuario"
 import { AxiosError } from "axios"
 
 

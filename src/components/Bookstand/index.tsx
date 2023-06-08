@@ -3,6 +3,7 @@ import { useState } from "react"
 import { styled } from "styled-components"
 import { BooksCarousel } from "./booksCarousel"
 import { BookCard } from "./bookCard"
+import { ErrorMessage } from "components/ErrorMessage"
 
 
 interface PropsBookstand {
@@ -10,8 +11,9 @@ interface PropsBookstand {
   title: string,
 }
 export const Bookstand = ({books, title}:PropsBookstand) => {
-  
+
   const [currentBook, setCurrentBook] = useState(books[0])
+
   return(
     <StyledBookstand>
       <div className="title">
@@ -19,7 +21,12 @@ export const Bookstand = ({books, title}:PropsBookstand) => {
       </div>
       <div className="content">
         <BooksCarousel onSelectBook={setCurrentBook} books={books} />
-        <BookCard book={currentBook} />
+        { books.length !== 0 && <BookCard book={currentBook} />}
+        { books.length === 0 && 
+          <StyledBookstand>
+            <ErrorMessage> Não foram identificados livros para esta estante! tente novamente mais tarde </ErrorMessage>
+          </StyledBookstand> 
+        }
       </div>
     </StyledBookstand>
   )

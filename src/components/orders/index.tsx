@@ -1,7 +1,7 @@
 import { SectionTitle } from "components/Title"
 import { styled } from "styled-components"
 import { Order } from "./order"
-import { OrdersRequester } from "requests/orders"
+import { OrdersRequester } from "requesters/orders"
 import { useQuery } from "@tanstack/react-query"
 
 

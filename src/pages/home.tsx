@@ -1,7 +1,7 @@
 import { Search } from "components/Search"
 import { Bookstand } from "components/Bookstand"
 import { useQuery } from "@tanstack/react-query"
-import { BooksRequester } from "requests/books"
+import { BooksRequester } from "requesters/books"
 import { Loader } from "components/loader"
 
 export const HomePage = () => {

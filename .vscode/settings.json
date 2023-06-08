@@ -10,7 +10,6 @@
     "package.json": true,
     "public": true,
     "node_modules": true,
-    "api": true,
     "build": true,
     ".vscode": true,
     ".idea": true,
@@ -20,12 +19,12 @@
     "package-lock.json": true,
     "jest.config.js": true,
     "LICENSE": true,
-    ".gitignore": true
+    ".gitignore": true,
+    "api": true
   },
   "hide-files.files": [
     "public",
     "node_modules",
-    "api",
     "build",
     ".vscode",
     ".idea",
@@ -35,6 +34,7 @@
     "package-lock.json",
     "jest.config.js",
     "LICENSE",
-    ".gitignore"
+    ".gitignore",
+    "api"
   ]
 }
