@@ -1,4 +1,6 @@
 import { AccountMenu } from "components/AccountMenu/acountMenu"
+import { MostSearchedCategories } from "components/MostSearchedCategories"
+import { NewsLetter } from "components/Newsletter"
 import { CartTitle } from "components/cartTitle"
 import { useEffect } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
@@ -6,7 +8,7 @@ import { styled } from "styled-components"
 import { SessionToken } from "utils/sessionToken"
 
 
-export const Profile = () => {
+export const ProfilePage = () => {
 
   const navigate = useNavigate()
   
@@ -20,11 +22,13 @@ export const Profile = () => {
 
   return(
     <StyledProfile>
-      <CartTitle title="Minha sacola" />
+      <CartTitle> Minha sacola </CartTitle>
       <div className="orders__content">
         <AccountMenu />
         <Outlet />
       </div>
+      <MostSearchedCategories />
+      <NewsLetter />
     </StyledProfile>
   )
 }

@@ -6,7 +6,7 @@ import { styled } from "styled-components"
 export const MostSearchedCategories : React.FC = () => {
   return(
     <StyledMostSearchedCategories>
-      <SectionTitle size="small" dark_mode='white' > CATEGORIAS MAIS BUSCADAS </SectionTitle>
+      <SectionTitle size="small" title_color='white' > CATEGORIAS MAIS BUSCADAS </SectionTitle>
       <ul className="mostSearchedCategories__categories">
         <AbBotao texto="Android" />
         <AbBotao texto="OO" />

@@ -13,8 +13,21 @@ export class BooksRequester{
   }
 
   static async getBooksByCategory(category_id:number){
-    const books = await AxiosHandler.get<IBook[]>(`livros?categoria=${category_id}`)
+    const books = await AxiosHandler.get<IBook[]>(`livros`, {
+      params:{
+        categoria: category_id
+      }
+    })
     return books.data
+  }
+
+  static async getBookBySlug(slug:string){
+    const book = await AxiosHandler.get<IBook[]>(`livros`, {
+      params:{
+        slug:slug
+      }  
+    })
+    return book.data[0]
   }
 
 }

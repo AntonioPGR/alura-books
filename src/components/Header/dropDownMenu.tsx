@@ -25,9 +25,9 @@ export const DropDownMenu = ({links, title, titleClassName}:PropsDropDownMenu) =
       </div>
       <div className="menu__links">
         {
-          links.map((link, index) => {
+          links.map((link) => {
             return(
-              <Link className="menu__link" to={`categorias/${link.slug}`} key={link.id || index} target='_self'> {link.nome} </Link>
+              <Link className="menu__link" to={`categorias/${link.slug}`} key={link.id} target='_self'> {link.nome} </Link>
             )
           })
         }

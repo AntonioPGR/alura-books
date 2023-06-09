@@ -13,6 +13,12 @@ declare interface IBook {
   sobre: string,
 }
 
+declare interface IAutor{
+  id: number,
+  nome: string,
+  sobre: string
+}
+
 declare interface IPurchaseOption{
   id: number,
   titulo: string,

@@ -7,9 +7,10 @@ import { PriceFormatterToBRL } from "utils/priceFormatter"
 
 
 interface PropsBookCard {
-  book: IBook
+  book: IBook,
+  autor_name:string
 }
-export const BookCard = ({book}:PropsBookCard) => {
+export const BookCard = ({book, autor_name}:PropsBookCard) => {
 
   const getLowestPrice = () => {
     const lowestPriceProduct = book.opcoesCompra.reduce((prev, current) => prev.preco < current.preco? prev : current)
@@ -20,7 +21,7 @@ export const BookCard = ({book}:PropsBookCard) => {
     <StyledBookCard>
       <div className="book__header">
         <div className="book__about">
-          <SectionTitle dark_mode="yellow" bold> Sobre o livro: </SectionTitle>
+          <SectionTitle title_color="yellow" bold> Sobre o livro: </SectionTitle>
           <div className="book__actions">
             <img src={Sacola} alt="icone sacola" />
             <img src={Favoritos} alt="icone de favoritos" />
@@ -30,7 +31,7 @@ export const BookCard = ({book}:PropsBookCard) => {
       </div>
       <div className="book__info">
         <p className="book__description"> {book.descricao} </p>
-        <p className="book__author"> Por: {book.autor} </p>
+        <p className="book__author"> Por: {autor_name} </p>
       </div>
       <div className="book__priceContainer">
         <div className="book__price">

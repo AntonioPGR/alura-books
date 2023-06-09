@@ -3,6 +3,8 @@ import { Bookstand } from "components/Bookstand"
 import { useQuery } from "@tanstack/react-query"
 import { BooksRequester } from "requesters/books"
 import { Loader } from "components/loader"
+import { MostSearchedCategories } from "components/MostSearchedCategories"
+import { NewsLetter } from "components/Newsletter"
 
 export const HomePage = () => {
 
@@ -17,6 +19,8 @@ export const HomePage = () => {
       <>
         <Bookstand title="últimos lançamentos" books={released_books || []} />
         <Bookstand title="mais vendidos" books={best_sellers || []} />
+        <MostSearchedCategories />
+        <NewsLetter />
       </>
     )
   }

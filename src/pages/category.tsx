@@ -10,11 +10,11 @@ import { BooksList } from "components/BooksList"
 import { ErrorMessage } from "components/ErrorMessage"
 
 
-export const Category = () => {
+export const CategoryPage = () => {
 
   const {category_slug} = useParams()
   const {data:category, isLoading:isCategoryLoading, isFetching:isCategoryFetching} = useQuery(['cagoryBySlug', category_slug], () => CategoriesRequester.findCategoryBySlug(category_slug || ""))
-  const {data:books_list, isLoading:isBooksListLoading} = useQuery(['getBooksByCategory', category], () => BooksRequester.getBooksByCategory(category!.id))
+  const {data:books_list, isLoading:isBooksListLoading} = useQuery(['getBooksByCategory', category], () => BooksRequester.getBooksByCategory(category?.id || -1))
   
   return(
     <>
@@ -34,7 +34,7 @@ export const Category = () => {
       {
         category &&
         <StyledCategory>
-          <CartTitle title={category.nome} />
+          <CartTitle> {category.nome} </CartTitle>
           { isBooksListLoading && <Loader />}
           {!isBooksListLoading && !books_list &&
             <StyledCategoryWithAlert>

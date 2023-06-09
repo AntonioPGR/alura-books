@@ -14,4 +14,5 @@ export const ErrorMessage = ({children}:PropsErrorMessage) => {
 const StyledMessageContainer = styled.p`
   text-align: center;
   color: ${p => p.theme.colors.warnings};
+  padding: ${p => p.theme.spacing.large};
 `

@@ -25,7 +25,7 @@ export const OverScreen = ({children, title, onClose}:PropsOverScreen) => {
     <StyledOverScreen>
       <section className="overScreen__board">
         <header> 
-          <SectionTitle bold dark_mode="yellow" > {title} </SectionTitle>
+          <SectionTitle bold title_color="yellow" > {title} </SectionTitle>
           <div className="closeIconContainer" onClick={onCloseOverscreen}>
             <img src={Cross} alt="Fechar menu flutuante"/>
           </div>

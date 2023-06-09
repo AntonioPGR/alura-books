@@ -2,12 +2,12 @@ import { styled } from "styled-components"
 
 
 interface PropsCartTitle{
-  title: string
+  children:children
 }
-export const CartTitle = ({title}:PropsCartTitle) => {
+export const CartTitle = ({children}:PropsCartTitle) => {
   return (
     <StyledCartTitle>
-      { title }
+      { children }
     </StyledCartTitle>
   )
 }

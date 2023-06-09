@@ -27,6 +27,7 @@ const StyledBookCardCategory = styled.article`
   flex-flow: column nowrap;
   gap: 2px;
   align-items: center;
+  text-align: center;
 
   .cardCategory__cover{
     width: 100%;

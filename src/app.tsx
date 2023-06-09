@@ -1,12 +1,13 @@
-import { Header } from "components/Header"
-import { HomePage } from "pages/home"
-import { NewsLetter } from "components/Newsletter"
-import { MostSearchedCategories } from "components/MostSearchedCategories"
-import { Footer } from "components/Footer"
 import { Route, Routes } from "react-router-dom"
-import { Profile } from "pages/profile"
+// PAGES
+import { ProfilePage } from "pages/profile"
+import { CategoryPage } from "pages/category"
+import { HomePage } from "pages/home"
+import { BookPage } from "pages/book"
+// COMPONENT
+import { Header } from "components/Header"
+import { Footer } from "components/Footer"
 import { Orders } from "components/orders"
-import { Category } from "pages/category"
 
 
 export const App = () => {
@@ -15,13 +16,12 @@ export const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/perfil" element={<Profile />}>
+        <Route path="/perfil" element={<ProfilePage />}>
           <Route path="pedidos" element={<Orders />} />
         </Route>
-        <Route path="/categorias/:category_slug" element={<Category />} />
+        <Route path="/categorias/:category_slug" element={<CategoryPage />} />
+        <Route path="/livro/:book_slug" element={<BookPage />} />
       </Routes>
-      <MostSearchedCategories />
-      <NewsLetter />
       <Footer />
     </>
   )
