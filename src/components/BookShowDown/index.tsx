@@ -8,9 +8,9 @@ import { PriceFormatterToBRL } from "utils/priceFormatter";
 
 interface PropsBookShowDown{
   book: IBook,
-  autor: IAutor
+  autor_name: string
 }
-export const BookShowDown = ({book, autor}:PropsBookShowDown) => {
+export const BookShowDown = ({book, autor_name}:PropsBookShowDown) => {
 
   const [, setPurchaseOption] = useState<number>(book.opcoesCompra[0].id)
   const [amout, setAmout] = useState<number>(0)
@@ -36,7 +36,7 @@ export const BookShowDown = ({book, autor}:PropsBookShowDown) => {
         <section className="bookInfo__textInfoContainer">
           <SectionTitle title_color="blue" bold>{book.titulo}</SectionTitle>
           <Paragraph> {book.descricao} </Paragraph>
-          <Paragraph> Por: {autor.nome} </Paragraph>
+          <Paragraph> Por: {autor_name} </Paragraph>
         </section>
         <section className="bookInfo__purchaseOptionsContainer">
           <h3 className="bookInfo__sectTitle">Selecione o formato de seu livro:</h3>

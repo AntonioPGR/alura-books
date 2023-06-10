@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
+import { AxiosError } from "axios"
 import { BookShowDown } from "components/BookShowDown"
 import { ErrorMessage } from "components/ErrorMessage"
 import { InfoParagraph } from "components/InfoParagraph"
@@ -13,25 +14,28 @@ import { styled } from "styled-components"
 export const BookPage = () => {
   const {book_slug} = useParams()
 
-  const {data:book, isLoading: isBookLoading} = useQuery(['GetBookBySlug', book_slug], () => BooksRequester.getBookBySlug(book_slug || ''))
-  const {data:autor, isLoading:isAutorLoading} = useQuery(['GetAutorById', book], () => AutorRequester.getAutorById(book?.autor || -1))
-
-  if(!book_slug || (!isBookLoading && !book) || (!isAutorLoading && !autor)){
-    return <ErrorMessage> Não foi possivel encontrar o livro desejado! verifique o nome e tente novamente </ErrorMessage>
-  }
+  const {data:book, isLoading: isBookLoading, error:bookError} = useQuery<IBook, AxiosError>(['GetBookBySlug', book_slug], () => BooksRequester.getBookBySlug(book_slug || ''))
+  const {data:autor, isLoading:isAutorLoading} = useQuery<IAutor, AxiosError>(['GetAutorById', book], () => AutorRequester.getAutorById(book?.autor || -1))
 
   if(isBookLoading || isAutorLoading){
     return <Loader />
+  }
+
+  if(bookError || !book){
+    return <ErrorMessage> Algo deu errado ao tentar carregar o livro! mensagem de erro: {bookError.status}: {bookError.message} </ErrorMessage>
   }
 
   return(
     <StyledBookPage>
       <CartTitle> Detalhes do livro </CartTitle>
       <div className="content">
-        <BookShowDown book={book} autor={autor!} />
-        <InfoParagraph title="Sobre o Autor">
-          {autor?.sobre}
-        </InfoParagraph>
+        <BookShowDown book={book} autor_name={autor?.nome ?? 'não foi possivel encontrar o autor!'} />
+        {
+          autor && 
+          <InfoParagraph title="Sobre o Autor">
+            {autor.sobre}
+          </InfoParagraph>
+        }
         <InfoParagraph title="Sobre o livro">
           {book.sobre}
         </InfoParagraph>

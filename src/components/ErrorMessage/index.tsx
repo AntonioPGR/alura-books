@@ -1,7 +1,7 @@
 import { styled } from "styled-components"
 
 interface PropsErrorMessage{
-  children: children
+  children: children,
 }
 export const ErrorMessage = ({children}:PropsErrorMessage) => {
   return (
