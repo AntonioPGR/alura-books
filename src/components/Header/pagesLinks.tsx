@@ -4,21 +4,26 @@ import { styled } from "styled-components"
 // IMAGES
 import MenuIcon from 'images/menu.svg'
 import MenuIconWhite from 'images/menuWhite.svg'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { DropDownMenu } from "./dropDownMenu"
 import { CategoriesRequester } from "requesters/categories"
+import { useQuery } from "@tanstack/react-query"
 
 
 export const PagesLinks = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [categories, setCategories] = useState<ICategory[]>([]);
 
-  useEffect(() => {
-    CategoriesRequester.getCategories()
-      .then( res => setCategories(res.data))
-      .catch(e => alert(`${e.status}: ${e.message}`))
-  }, [])
+  const {data:categories, error} = useQuery(['getCategories'], () => CategoriesRequester.getCategories())
+
+  if(error){
+    alert('Não foi possivel carregar as categorias!')
+    return <></>
+  }
+  
+  if(!categories){
+    return <></>
+  }
 
   return(
     <StyledPagesLinks is_menu_open={isMenuOpen? 1 : 0}>

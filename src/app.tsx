@@ -1,9 +1,11 @@
+// ROUTER
 import { Route, Routes } from "react-router-dom"
 // PAGES
 import { ProfilePage } from "pages/profile"
 import { CategoryPage } from "pages/category"
 import { HomePage } from "pages/home"
 import { BookPage } from "pages/book"
+import { NotFoundPage } from "pages/notFound"
 // COMPONENT
 import { Header } from "components/Header"
 import { Footer } from "components/Footer"
@@ -21,6 +23,8 @@ export const App = () => {
         </Route>
         <Route path="/categorias/:category_slug" element={<CategoryPage />} />
         <Route path="/livro/:book_slug" element={<BookPage />} />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </>

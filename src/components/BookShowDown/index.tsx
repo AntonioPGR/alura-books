@@ -13,7 +13,13 @@ interface PropsBookShowDown{
 export const BookShowDown = ({book, autor_name}:PropsBookShowDown) => {
 
   const [, setPurchaseOption] = useState<number>(book.opcoesCompra[0].id)
-  const [amout, setAmout] = useState<number>(0)
+  const [amout, setAmout] = useState<number>(1)
+
+  const setBookAmout = (number:number) => {
+    if(number >= 1){
+      setAmout(number)
+    }
+  }
 
   const purchaseOptionToGrupoOpcoes = (purchase_options:IPurchaseOption[]):AbGrupoOpcao[] => {
     return purchase_options.map(purchase_option => {
@@ -47,7 +53,7 @@ export const BookShowDown = ({book, autor_name}:PropsBookShowDown) => {
           </ul>
           <Paragraph>*Você terá acesso às futuras atualizações do livro.</Paragraph>
         </section>
-        <AbInputQuantidade onChange={setAmout} value={amout} />
+        <AbInputQuantidade onChange={setBookAmout} value={amout} />
         <div className="bookInfo__button">
           <AbBotao texto="Comprar" />
         </div>

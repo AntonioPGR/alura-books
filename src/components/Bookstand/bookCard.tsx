@@ -4,6 +4,7 @@ import { styled } from "styled-components"
 import Sacola from 'images/sacola.svg'
 import Favoritos from 'images/favorito.svg'
 import { PriceFormatterToBRL } from "utils/priceFormatter"
+import { Link } from "react-router-dom"
 
 
 interface PropsBookCard {
@@ -39,7 +40,9 @@ export const BookCard = ({book, autor_name}:PropsBookCard) => {
           <p>{PriceFormatterToBRL.format(getLowestPrice())}</p>
         </div>
         <div className="book__button">
-          <AbBotao texto="Comprar" />
+          <Link to={`livro/${book.slug}`}>
+            <AbBotao texto="Comprar" />
+          </Link>
         </div>
       </div>
     </StyledBookCard>

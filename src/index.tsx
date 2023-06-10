@@ -15,7 +15,15 @@ import { GlobalStyle } from 'styles/global';
 import { ResetCSS } from 'styles/reset';
 import { defaultTheme } from 'styles/themes';
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+      cacheTime: 1000 * 60,
+    }
+  }
+})
 
 const Index = () => {
   return(

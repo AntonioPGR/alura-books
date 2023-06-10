@@ -4,8 +4,9 @@ import { AxiosHandler } from "./axiosHandler"
 const request_url = 'categorias'
 export class CategoriesRequester{
 
-  static getCategories(){
-    return AxiosHandler.get<ICategory[]>(request_url)
+  static async getCategories(){
+    const categories = await AxiosHandler.get<ICategory[]>(request_url)
+    return categories.data
   }
 
   static async findCategoryBySlug(slug:string){

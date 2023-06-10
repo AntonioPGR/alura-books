@@ -1,21 +1,31 @@
+import { useQuery } from "@tanstack/react-query"
+import { AxiosError } from "axios"
 import { SectionTitle } from "components/Title"
 import { AbBotao } from "ds-alurabooks"
+import { Link } from "react-router-dom"
+import { CategoriesRequester } from "requesters/categories"
 import { styled } from "styled-components"
 
 
 export const MostSearchedCategories : React.FC = () => {
+
+  const {data:categories, isLoading, error} = useQuery<ICategory[], AxiosError>(['getCategories'], () => CategoriesRequester.getCategories())
+
+  if(!categories || isLoading || error){
+    return <></>
+  }
+
   return(
     <StyledMostSearchedCategories>
       <SectionTitle size="small" title_color='white' > CATEGORIAS MAIS BUSCADAS </SectionTitle>
       <ul className="mostSearchedCategories__categories">
-        <AbBotao texto="Android" />
-        <AbBotao texto="OO" />
-        <AbBotao texto="Marketing Digital" />
-        <AbBotao texto="Agile" />
-        <AbBotao texto="Startups" />
-        <AbBotao texto="HTML & CSS" />
-        <AbBotao texto="Java" />
-        <AbBotao texto="Python" />
+        {
+          categories.map(category => (
+            <Link key={category.id} to={`/categorias/${category.slug}`}>
+              <AbBotao texto={category.nome} />
+            </Link>
+          ))
+        }
       </ul>
     </StyledMostSearchedCategories>
   )
