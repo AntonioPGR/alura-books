@@ -39,6 +39,7 @@ export const Bookstand = ({books, title}:PropsBookstand) => {
 const StyledBookstand = styled.section`
   background-color: ${props => props.theme.colors.lightGray};
   padding-bottom: ${props => props.theme.spacing.medium};
+  min-height: 70vh;
   
   .title{
     padding: ${props => props.theme.spacing.medium};

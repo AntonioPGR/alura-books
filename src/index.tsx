@@ -1,48 +1,34 @@
 // COMPONENTS
-import { App } from './app';
-// QUERY
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { App } from "./app";
+// PROVIDERS
+import { ReactQueryProvider } from "providers/react-query";
+import { StyledComponentsProvider } from "providers/styled-components";
+import { ApolloClientProvider } from "providers/apollo-client";
 // REACT
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-// RECOIL
-import { RecoilRoot } from 'recoil';
-// ROUTER
-import { BrowserRouter as Router } from 'react-router-dom'
-// STYLE
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from 'styles/global';
-import { ResetCSS } from 'styles/reset';
-import { defaultTheme } from 'styles/themes';
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: false,
-      cacheTime: 1000 * 60,
-    }
-  }
-})
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+// ROOTS
+import { RecoilRoot } from "recoil";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const Index = () => {
-  return(
+  return (
     <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <RecoilRoot>
-            <ThemeProvider theme={defaultTheme}>
-              <ResetCSS />
-              <GlobalStyle />
-              <App />
-            </ThemeProvider>
-          </ RecoilRoot>
-        </Router>
-      </QueryClientProvider>
+      <ApolloClientProvider>
+        <ReactQueryProvider>
+          <Router>
+            <RecoilRoot>
+              <StyledComponentsProvider>
+                <App />
+              </StyledComponentsProvider>
+            </RecoilRoot>
+          </Router>
+        </ReactQueryProvider>
+      </ApolloClientProvider>
     </StrictMode>
-  )
-}
+  );
+};
 
 const html_root = document.querySelector("#root") as HTMLElement;
 const root = createRoot(html_root);
-root.render( <Index /> )
+root.render(<Index />);

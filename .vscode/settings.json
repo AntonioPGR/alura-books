@@ -14,12 +14,13 @@
     ".vscode": true,
     ".idea": true,
     "yarn.lock": true,
-    "tsconfig.json": true,
     "README.md": true,
     "package-lock.json": true,
     "jest.config.js": true,
     "LICENSE": true,
-    ".gitignore": true
+    ".gitignore": true,
+    "tsconfig.json": true,
+    "alurabooks-gql": true
   },
   "hide-files.files": [
     "public",
@@ -28,11 +29,12 @@
     ".vscode",
     ".idea",
     "yarn.lock",
-    "tsconfig.json",
     "README.md",
     "package-lock.json",
     "jest.config.js",
     "LICENSE",
-    ".gitignore"
+    ".gitignore",
+    "tsconfig.json",
+    "alurabooks-gql"
   ]
 }

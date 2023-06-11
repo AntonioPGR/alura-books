@@ -15,7 +15,7 @@ export const BookPage = () => {
   const {book_slug} = useParams()
 
   const {data:book, isLoading: isBookLoading, error:bookError} = useQuery<IBook, AxiosError>(['GetBookBySlug', book_slug], () => BooksRequester.getBookBySlug(book_slug || ''))
-  const {data:autor, isLoading:isAutorLoading} = useQuery<IAutor, AxiosError>(['GetAutorById', book], () => AutorRequester.getAutorById(book?.autor || -1))
+  const {data:autor, isLoading:isAutorLoading} = useQuery<IAutor | undefined, AxiosError>(['GetAutorById', book?.autor], () => AutorRequester.getAutorById(book!.autor))
 
   if(isBookLoading || isAutorLoading){
     return <Loader />

@@ -1,28 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// APOLLO CLIENT
+// COMPONENTS
 import { CartTitle } from "components/cartTitle"
 import { Loader } from "components/loader"
-import { useParams } from "react-router-dom"
-import { styled } from "styled-components"
-import { useQuery } from '@tanstack/react-query'
-import { CategoriesRequester } from "requesters/categories"
-import { BooksRequester } from "requesters/books"
 import { BooksList } from "components/BooksList"
 import { ErrorMessage } from "components/ErrorMessage"
+// REACT QUERY
+import { useQuery } from '@tanstack/react-query'
+// REQUESTERS
+import { CategoriesRequester } from "requesters/categories"
+// ROUTER
+import { useParams } from "react-router-dom"
+// STYLES
+import { styled } from "styled-components"
 
 
 export const CategoryPage = () => {
 
   const {category_slug} = useParams()
-  const {data:category, isLoading:isCategoryLoading, isFetching:isCategoryFetching} = useQuery(['cagoryBySlug', category_slug], () => CategoriesRequester.findCategoryBySlug(category_slug || ""))
-  const {data:books_list, isLoading:isBooksListLoading} = useQuery(['getBooksByCategory', category], () => BooksRequester.getBooksByCategory(category?.id || -1))
-  
+  const {data:category, isLoading:isCategoryLoading } = useQuery(['cagoryBySlug', category_slug], () => CategoriesRequester.findCategoryBySlug(category_slug || ""))  
   return(
     <>
-      {(isCategoryLoading && isBooksListLoading) || isCategoryFetching?
+      { isCategoryLoading &&
         <StyledCategoryWithAlert> 
           <Loader />
         </StyledCategoryWithAlert> 
-        : ""
       }
 
       {!isCategoryLoading && !category &&
@@ -35,18 +37,7 @@ export const CategoryPage = () => {
         category &&
         <StyledCategory>
           <CartTitle> {category.nome} </CartTitle>
-          { isBooksListLoading && <Loader />}
-          {!isBooksListLoading && !books_list &&
-            <StyledCategoryWithAlert>
-              <ErrorMessage> Não foi possivel encontrar os livros desejados! verifique se o nome está correto e tente novamente </ErrorMessage>
-            </StyledCategoryWithAlert> 
-          }
-          { books_list && books_list.length === 0 &&  
-            <StyledCategoryWithAlert>
-              <ErrorMessage> Ainda não temos livros disponiveis nesta categoria! mas fique a vontade para explorar outras! </ErrorMessage>
-            </StyledCategoryWithAlert> 
-          }
-          { books_list && books_list.length !== 0 && <BooksList books={books_list} /> }
+          <BooksList category_id={category.id} />
         </StyledCategory>
       }
     </>
@@ -54,7 +45,7 @@ export const CategoryPage = () => {
 }
 
 const StyledCategory = styled.main`
-  min-height: clamp(200px, 60vh, 400px);
+  min-height: clamp(200px, 70vh, 70vh);
 `
 
 const StyledCategoryWithAlert = styled(StyledCategory)`

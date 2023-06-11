@@ -1,12 +1,17 @@
+// APOLLO CLIENT
+// AXIOS
+import { AxiosError } from "axios"
+// COMPONENTS
 import { Search } from "components/Search"
 import { Bookstand } from "components/Bookstand"
-import { useQuery } from "@tanstack/react-query"
-import { BooksRequester } from "requesters/books"
 import { Loader } from "components/loader"
-import { MostSearchedCategories } from "components/MostSearchedCategories"
-import { NewsLetter } from "components/Newsletter"
 import { ErrorMessage } from "components/ErrorMessage"
-import { AxiosError } from "axios"
+import { NewsLetter } from "components/Newsletter"
+import { MostSearchedCategories } from "components/MostSearchedCategories"
+// REACT QUERY
+import { useQuery } from "@tanstack/react-query"
+// REQUESTERS
+import { BooksRequester } from "requesters/books"
 
 export const HomePage = () => {
 

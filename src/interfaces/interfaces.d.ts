@@ -13,6 +13,10 @@ declare interface IBook {
   sobre: string,
 }
 
+declare interface PropsProvider{
+  children:children
+}
+
 declare interface IAutor{
   id: number,
   nome: string,
