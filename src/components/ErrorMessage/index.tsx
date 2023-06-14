@@ -12,7 +12,10 @@ export const ErrorMessage = ({children}:PropsErrorMessage) => {
 }
 
 const StyledMessageContainer = styled.p`
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: ${p => p.theme.colors.warnings};
   padding: ${p => p.theme.spacing.large};
+  min-height: 40vh;
 `

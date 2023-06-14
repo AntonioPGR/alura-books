@@ -7,7 +7,7 @@ import { CartTitle } from "components/cartTitle"
 import { Loader } from "components/loader"
 import { useParams } from "react-router-dom"
 import { AutorRequester } from "requesters/autor"
-import { BooksRequester } from "requesters/books"
+import { BooksRequester } from "graphQl/books/booksRequester"
 import { styled } from "styled-components"
 
 
