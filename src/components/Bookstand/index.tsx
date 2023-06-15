@@ -1,21 +1,21 @@
+// COMPONENTS
 import { SectionTitle } from "components/Title"
-import { useState } from "react"
-import { styled } from "styled-components"
 import { BooksCarousel } from "./booksCarousel"
 import { BookCard } from "./bookCard"
 import { ErrorMessage } from "components/ErrorMessage"
-import { useQuery } from "@tanstack/react-query"
-import { AutorRequester } from "requesters/autor"
+// REACT
+import { useState } from "react"
+// STYLE
+import { styled } from "styled-components"
 
 
 interface PropsBookstand {
-  books: IBook[],
+  books: IBookResume[],
   title: string,
 }
 export const Bookstand = ({books, title}:PropsBookstand) => {
 
   const [current_book, setCurrentBook] = useState(books[0])
-  const {data:current_book_autor} = useQuery(['getAutorByBook', current_book], () => AutorRequester.getAutorById(current_book.autor))
 
   return(
     <StyledBookstand>
@@ -29,7 +29,7 @@ export const Bookstand = ({books, title}:PropsBookstand) => {
         books.length !== 0 &&
         <div className="content">
           <BooksCarousel onSelectBook={setCurrentBook} books={books} />
-          <BookCard book={current_book} autor_name={current_book_autor?.nome ?? 'loading...'} />
+          <BookCard book={current_book} />
         </div>
       }
     </StyledBookstand>

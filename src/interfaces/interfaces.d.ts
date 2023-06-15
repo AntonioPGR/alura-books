@@ -1,33 +1,5 @@
-declare interface IBook {
-  id: number,
-  categoria: number,
-  titulo: string,
-  slug: string,
-  descricao: string,
-  isbn: string,
-  numeroPaginas: number,
-  publicacao: string,
-  imagemCapa: string,
-  autor: number,
-  opcoesCompra: IPurchaseOption[],
-  sobre: string,
-}
-
 declare interface PropsProvider{
   children:children
-}
-
-declare interface IAutor{
-  id: number,
-  nome: string,
-  sobre: string
-}
-
-declare interface IPurchaseOption{
-  id: number,
-  titulo: string,
-  preco: number,
-  formatos?: string[],
 }
 
 declare interface IUserSignUp{

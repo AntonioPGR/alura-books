@@ -16,16 +16,10 @@ export const BooksList = ({category_id}:PropsBooksList) => {
   const [search, setSearch] = useState('')
 
   const books = useReactiveVar(var_books)
-  const {loading:isBooksLoading, refetch} = BooksRequester.getBooksByCategoryAndTitle(category_id, search)
+  const {loading:isBooksLoading} = BooksRequester.getBooksByCategoryAndTitle(category_id, search)
 
   const handleInputChange = (value:string) => {
     setSearch(value)
-    // refetch({
-    //   variables: {
-    //     categoriaId: category_id,
-    //     titulo: search
-    //   }
-    // })
   }
 
   const renderBooksList = () => {

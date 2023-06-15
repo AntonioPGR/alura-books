@@ -5,7 +5,7 @@ import { PriceFormatterToBRL } from "utils/priceFormatter";
 
 
 interface PropsBookCard{
-  book: IBook;
+  book: IBookBasic;
 }
 export const BookCardCategory = ({book}:PropsBookCard) => {
   return (

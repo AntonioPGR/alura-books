@@ -27,7 +27,7 @@ export const HomePage = () => {
       return <Loader />
     }
     if(best_sellers_error || released_error){
-      return <ErrorMessage> Algo deu errado ao carregar as sessões! Mais vendidos: {best_sellers_error?.message} && lancamentos: {released_error?.message} </ErrorMessage>
+      return <ErrorMessage> Algo deu errado ao carregar as sessões!</ErrorMessage>
     }
     return (
       <>

@@ -3,8 +3,8 @@ import { Book } from "./book"
 
 
 interface PropsBooksCarousel {
-  books: IBook[],
-  onSelectBook: (book:IBook) => void
+  books: IBookResume[],
+  onSelectBook: (book:IBookResume) => void
 }
 export const BooksCarousel = ({books, onSelectBook}:PropsBooksCarousel) => {
   return(

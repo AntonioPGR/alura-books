@@ -8,10 +8,9 @@ import { Link } from "react-router-dom"
 
 
 interface PropsBookCard {
-  book: IBook,
-  autor_name:string
+  book: IBookResume,
 }
-export const BookCard = ({book, autor_name}:PropsBookCard) => {
+export const BookCard = ({book}:PropsBookCard) => {
 
   const getLowestPrice = () => {
     const lowestPriceProduct = book.opcoesCompra.reduce((prev, current) => prev.preco < current.preco? prev : current)
@@ -32,7 +31,7 @@ export const BookCard = ({book, autor_name}:PropsBookCard) => {
       </div>
       <div className="book__info">
         <p className="book__description"> {book.descricao} </p>
-        <p className="book__author"> Por: {autor_name} </p>
+        <p className="book__author"> Por: {book.autor.nome} </p>
       </div>
       <div className="book__priceContainer">
         <div className="book__price">

@@ -1,43 +1,44 @@
-import { useQuery } from "@tanstack/react-query"
-import { AxiosError } from "axios"
+// APOLLO CLIENTS
+// COMPONENTS
 import { BookShowDown } from "components/BookShowDown"
 import { ErrorMessage } from "components/ErrorMessage"
 import { InfoParagraph } from "components/InfoParagraph"
 import { CartTitle } from "components/cartTitle"
 import { Loader } from "components/loader"
+// ROUTER
 import { useParams } from "react-router-dom"
-import { AutorRequester } from "requesters/autor"
+// REQUESTERS
 import { BooksRequester } from "graphQl/books/booksRequester"
+// STYLE
 import { styled } from "styled-components"
+import { useReactiveVar } from "@apollo/client"
+import { var_book } from "graphQl/books/state"
 
 
 export const BookPage = () => {
   const {book_slug} = useParams()
 
-  const {data:book, isLoading: isBookLoading, error:bookError} = useQuery<IBook, AxiosError>(['GetBookBySlug', book_slug], () => BooksRequester.getBookBySlug(book_slug || ''))
-  const {data:autor, isLoading:isAutorLoading} = useQuery<IAutor | undefined, AxiosError>(['GetAutorById', book?.autor], () => AutorRequester.getAutorById(book!.autor))
+  const {loading: isBookLoading, error:bookError} = BooksRequester.getBookBySlug(book_slug || '')
+  const livro = useReactiveVar(var_book)
 
-  if(isBookLoading || isAutorLoading){
+  if(isBookLoading){
     return <Loader />
   }
-
-  if(bookError || !book){
-    return <ErrorMessage> Algo deu errado ao tentar carregar o livro! mensagem de erro: {bookError.status}: {bookError.message} </ErrorMessage>
+  if(bookError || !livro){
+    return <ErrorMessage> Algo deu errado ao tentar carregar o livro! mensagem de erro: {bookError?.message} </ErrorMessage>
   }
-
   return(
     <StyledBookPage>
       <CartTitle> Detalhes do livro </CartTitle>
       <div className="content">
-        <BookShowDown book={book} autor_name={autor?.nome ?? 'não foi possivel encontrar o autor!'} />
-        {
-          autor && 
+        <BookShowDown book={livro} />
+        { 
           <InfoParagraph title="Sobre o Autor">
-            {autor.sobre}
+            {livro.autor.sobre}
           </InfoParagraph>
         }
         <InfoParagraph title="Sobre o livro">
-          {book.sobre}
+          {livro.sobre}
         </InfoParagraph>
       </div>
     </StyledBookPage>

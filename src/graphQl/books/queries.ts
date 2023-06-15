@@ -25,10 +25,10 @@ export const GET_RELEASED_BOOKS = gql`
         slug,
         descricao,
         opcoesCompra{
-          preco
+          preco,
         }
         autor{
-          nome
+          nome,
         }
       }
     }
@@ -45,12 +45,33 @@ export const GET_BEST_SELLERS = gql`
         slug,
         descricao,
         opcoesCompra{
-          preco
+          preco,
         }
         autor{
-          nome
+          nome,
         }
       }
     }
   }
+`
+
+export const GET_BOOK_BY_SLUG = gql`
+query getBookBySlug($slug:String!){
+  livro(slug:$slug){
+    autor{
+      nome,
+      sobre
+    }
+    imagemCapa,
+    titulo,
+    opcoesCompra{
+      titulo,
+      formatos,
+      preco,
+      id
+    },
+    descricao,
+    sobre
+  }
+}
 `

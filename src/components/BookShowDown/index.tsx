@@ -7,10 +7,9 @@ import { PriceFormatterToBRL } from "utils/priceFormatter";
 
 
 interface PropsBookShowDown{
-  book: IBook,
-  autor_name: string
+  book: IBookComplete,
 }
-export const BookShowDown = ({book, autor_name}:PropsBookShowDown) => {
+export const BookShowDown = ({book}:PropsBookShowDown) => {
 
   const [, setPurchaseOption] = useState<number>(book.opcoesCompra[0].id)
   const [amout, setAmout] = useState<number>(1)
@@ -21,7 +20,7 @@ export const BookShowDown = ({book, autor_name}:PropsBookShowDown) => {
     }
   }
 
-  const purchaseOptionToGrupoOpcoes = (purchase_options:IPurchaseOption[]):AbGrupoOpcao[] => {
+  const purchaseOptionToGrupoOpcoes = (purchase_options:IPurchaseOptionComplete[]):AbGrupoOpcao[] => {
     return purchase_options.map(purchase_option => {
       const grupoDeOpcao : AbGrupoOpcao = {
         id: purchase_option.id,
@@ -42,7 +41,7 @@ export const BookShowDown = ({book, autor_name}:PropsBookShowDown) => {
         <section className="bookInfo__textInfoContainer">
           <SectionTitle title_color="blue" bold>{book.titulo}</SectionTitle>
           <Paragraph> {book.descricao} </Paragraph>
-          <Paragraph> Por: {autor_name} </Paragraph>
+          <Paragraph> Por: {book.autor.nome} </Paragraph>
         </section>
         <section className="bookInfo__purchaseOptionsContainer">
           <h3 className="bookInfo__sectTitle">Selecione o formato de seu livro:</h3>

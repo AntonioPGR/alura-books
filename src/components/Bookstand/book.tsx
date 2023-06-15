@@ -2,8 +2,8 @@ import { styled } from "styled-components"
 
 
 interface PropsBook {
-  book: IBook,
-  onClick: (book:IBook) => void
+  book: IBookResume,
+  onClick: (book:IBookResume) => void
 }
 export const Book = ({book, onClick}:PropsBook) => {
   return(
