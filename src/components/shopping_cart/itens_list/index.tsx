@@ -2,7 +2,7 @@ import { styled } from "styled-components"
 import { Item } from "./item"
 
 interface PropsItensList{
-  itens: IShoppingCartProduct[]
+  itens: IShoppingCartItem[]
 }
 export const ItensList = ({itens}:PropsItensList) => {
   return (

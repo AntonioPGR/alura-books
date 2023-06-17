@@ -6,7 +6,7 @@ import {useState} from 'react'
 
 
 interface PropsOrder{
-  item: IShoppingCartProduct
+  item: IShoppingCartItem
 }
 export const Item = ({item}:PropsOrder) => {
 

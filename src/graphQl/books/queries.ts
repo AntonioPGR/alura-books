@@ -58,6 +58,7 @@ export const GET_BEST_SELLERS = gql`
 export const GET_BOOK_BY_SLUG = gql`
   query getBookBySlug($slug:String!){
     livro(slug:$slug){
+      id,
       autor{
         nome,
         sobre

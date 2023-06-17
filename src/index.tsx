@@ -5,16 +5,16 @@ import { ReactQueryProvider } from "providers/react-query";
 import { StyledComponentsProvider } from "providers/styled-components";
 import { ApolloClientProvider } from "providers/apollo-client";
 // REACT
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 // ROOTS
 import { RecoilRoot } from "recoil";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ShoppingCartProvider } from "providers/shopping_cart";
 
 const Index = () => {
   return (
-    <StrictMode>
-      <ApolloClientProvider>
+    <ApolloClientProvider>
+      <ShoppingCartProvider>
         <ReactQueryProvider>
           <Router>
             <RecoilRoot>
@@ -24,8 +24,8 @@ const Index = () => {
             </RecoilRoot>
           </Router>
         </ReactQueryProvider>
-      </ApolloClientProvider>
-    </StrictMode>
+      </ShoppingCartProvider>
+    </ApolloClientProvider>
   );
 };
 

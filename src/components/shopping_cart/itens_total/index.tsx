@@ -7,6 +7,7 @@ interface PropsItensTotal{
   total: number
 }
 export const ItensTotal = ({total}:PropsItensTotal) => {
+  
   return(
     <StyledItensTotal>
       <span className="total__label">Total da compra:</span>

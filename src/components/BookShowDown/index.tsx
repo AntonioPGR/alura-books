@@ -1,9 +1,11 @@
 import { Paragraph } from "components/Paragraph";
 import { SectionTitle } from "components/Title";
-import { AbBotao, AbGrupoOpcao, AbGrupoOpcoes, AbInputQuantidade } from "ds-alurabooks";
-import { useState } from "react";
+import { AbBotao, AbGrupoOpcoes, AbInputQuantidade } from "ds-alurabooks";
+import { shopping_cart_context } from "providers/shopping_cart";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components"
-import { PriceFormatterToBRL } from "utils/priceFormatter";
+import { purchaseOptionToGrupoOpcoes } from "utils/purchaseOptionToOptionsGroup";
 
 
 interface PropsBookShowDown{
@@ -11,8 +13,11 @@ interface PropsBookShowDown{
 }
 export const BookShowDown = ({book}:PropsBookShowDown) => {
 
-  const [, setPurchaseOption] = useState<number>(book.opcoesCompra[0].id)
+  const [purchaseOptionID, setPurchaseOption] = useState<number>(book.opcoesCompra[0].id)
   const [amout, setAmout] = useState<number>(1)
+  const {add_item_to_shopping_cart} = useContext(shopping_cart_context)
+  const grupoDeOpcoes = purchaseOptionToGrupoOpcoes(book.opcoesCompra)
+  const navigate = useNavigate()
 
   const setBookAmout = (number:number) => {
     if(number >= 1){
@@ -20,17 +25,11 @@ export const BookShowDown = ({book}:PropsBookShowDown) => {
     }
   }
 
-  const purchaseOptionToGrupoOpcoes = (purchase_options:IPurchaseOptionComplete[]):AbGrupoOpcao[] => {
-    return purchase_options.map(purchase_option => {
-      const grupoDeOpcao : AbGrupoOpcao = {
-        id: purchase_option.id,
-        titulo: purchase_option.titulo,
-        corpo: PriceFormatterToBRL.format(purchase_option.preco),
-        rodape: purchase_option.formatos? purchase_option.formatos.reduce((prev, current) => prev + current) : ""
-      }
-      return grupoDeOpcao
-    }) 
+  const handleAdicionarItem = () => {
+    add_item_to_shopping_cart(book.id, purchaseOptionID, amout)
+    navigate('/sacola')
   }
+
 
   return (
     <StyledBookShowDown>
@@ -47,14 +46,14 @@ export const BookShowDown = ({book}:PropsBookShowDown) => {
           <h3 className="bookInfo__sectTitle">Selecione o formato de seu livro:</h3>
           <ul className="bookInfo__purchaseOptionsList">
             {
-              <AbGrupoOpcoes opcoes={purchaseOptionToGrupoOpcoes(book.opcoesCompra)} onChange={(opcao) => setPurchaseOption(opcao.id)} />
+              <AbGrupoOpcoes valorPadrao={grupoDeOpcoes[0]} opcoes={grupoDeOpcoes} onChange={(opcao) => setPurchaseOption(opcao.id)} />
             }
           </ul>
           <Paragraph>*Você terá acesso às futuras atualizações do livro.</Paragraph>
         </section>
         <AbInputQuantidade onChange={setBookAmout} value={amout} />
         <div className="bookInfo__button">
-          <AbBotao texto="Comprar" />
+          <AbBotao texto="Comprar" onClick={handleAdicionarItem} />
         </div>
       </article>
     </StyledBookShowDown>
