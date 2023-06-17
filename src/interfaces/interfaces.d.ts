@@ -11,6 +11,11 @@ declare interface IUserSignUp{
   cep: string
 }
 
+declare interface ITag{
+  id: number,
+  nome: string
+}
+
 declare interface IUserLogin{
   email: string,
   senha: string,

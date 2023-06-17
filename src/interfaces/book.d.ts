@@ -8,6 +8,7 @@ declare interface IBookComplete{
   autor: IAutorComplete,
   opcoesCompra: IPurchaseOptionComplete[],
   sobre: string,
+  tags: ITag[]
 }
 
 declare interface IBookResume{
@@ -19,6 +20,16 @@ declare interface IBookResume{
   sobre: string,
   autor: IAutorName,
   opcoesCompra: IPurchaseOptionPrice[],
+}
+
+declare interface IBookCart{
+  id: number,
+  titulo: string,
+  slug: string,
+  descricao: string,
+  imagemCapa: string,
+  sobre: string,
+  autor: IAutorName,
 }
 
 declare interface IBookBasic{

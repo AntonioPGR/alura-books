@@ -19,8 +19,7 @@
     "jest.config.js": true,
     "LICENSE": true,
     ".gitignore": true,
-    "tsconfig.json": true,
-    "alurabooks-gql": true
+    "tsconfig.json": true
   },
   "hide-files.files": [
     "public",
@@ -34,7 +33,6 @@
     "jest.config.js",
     "LICENSE",
     ".gitignore",
-    "tsconfig.json",
-    "alurabooks-gql"
+    "tsconfig.json"
   ]
 }

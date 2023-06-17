@@ -29,14 +29,14 @@ export const PersonalLinks = () => {
   return(
     <>
       <StyledPersonalLinks>
+        <Link to={'/sacola'} className="personalLink__link" target="_self">
+          <img src={Sacola} alt="icone de sacola" />
+          <span> Minha sacola </span>
+        </Link>
         {
           isLoggedIn &&
           (
             <>
-              <Link to={'/perfil/pedidos'} className="personalLink__link" target="_self">
-                <img src={Sacola} alt="icone de sacola" />
-                <span> Minha sacola </span>
-              </Link>
               <button className="personalLink__link" onClick={logout}>
                 <img src={Perfil} alt="icone meu perfil" />
                 <span> Sair </span>

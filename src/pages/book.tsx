@@ -13,7 +13,7 @@ import { BooksRequester } from "graphQl/books/booksRequester"
 import { styled } from "styled-components"
 import { useReactiveVar } from "@apollo/client"
 import { var_book } from "graphQl/books/state"
-
+import { TagsList } from "components/TagList"
 
 export const BookPage = () => {
   const {book_slug} = useParams()
@@ -40,6 +40,7 @@ export const BookPage = () => {
         <InfoParagraph title="Sobre o livro">
           {livro.sobre}
         </InfoParagraph>
+        <TagsList tags={livro.tags} />
       </div>
     </StyledBookPage>
   )

@@ -8,7 +8,7 @@ import { styled } from "styled-components"
 import { SessionToken } from "utils/sessionToken"
 
 
-export const ProfilePage = () => {
+export const DefaultProfilePage = () => {
 
   const navigate = useNavigate()
   
@@ -22,7 +22,7 @@ export const ProfilePage = () => {
 
   return(
     <StyledProfile>
-      <CartTitle> Minha sacola </CartTitle>
+      <CartTitle> Meu perfil </CartTitle>
       <div className="orders__content">
         <AccountMenu />
         <Outlet />

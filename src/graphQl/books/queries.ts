@@ -56,22 +56,26 @@ export const GET_BEST_SELLERS = gql`
 `
 
 export const GET_BOOK_BY_SLUG = gql`
-query getBookBySlug($slug:String!){
-  livro(slug:$slug){
-    autor{
-      nome,
-      sobre
-    }
-    imagemCapa,
-    titulo,
-    opcoesCompra{
+  query getBookBySlug($slug:String!){
+    livro(slug:$slug){
+      autor{
+        nome,
+        sobre
+      }
+      imagemCapa,
       titulo,
-      formatos,
-      preco,
-      id
-    },
-    descricao,
-    sobre
+      opcoesCompra{
+        titulo,
+        formatos,
+        preco,
+        id
+      },
+      descricao,
+      sobre,
+      tags{
+        id,
+        nome
+      }
+    }
   }
-}
 `
